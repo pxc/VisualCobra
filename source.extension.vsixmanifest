@@ -3,7 +3,7 @@
   <Identifier Id="VisualCobra.Microsoft.1eec244b-eaba-49ea-ae2f-fb2c7b8a0b45">
     <Name>VisualCobra</Name>
     <Author>Matthew Strawbridge</Author>
-    <Version>1.0</Version>
+    <Version>1.1</Version>
     <Description xml:space="preserve">This is a Cobra language extension to the Visual Studio Editor.
 
 For more information about the Cobra programming language see &lt;http://www.cobra-language.com&gt;.</Description>
@@ -15,7 +15,9 @@ For more information about the Cobra programming language see &lt;http://www.cob
         <Edition>Ultimate</Edition>
         <Edition>Premium</Edition>
         <Edition>Pro</Edition>
+        <Edition>IntegratedShell</Edition>
       </VisualStudio>
+      <IsolatedShell Version="1.0">VSShellStub1</IsolatedShell>
     </SupportedProducts>
     <SupportedFrameworkRuntimeEdition MinVersion="4.0" MaxVersion="4.0" />
   </Identifier>

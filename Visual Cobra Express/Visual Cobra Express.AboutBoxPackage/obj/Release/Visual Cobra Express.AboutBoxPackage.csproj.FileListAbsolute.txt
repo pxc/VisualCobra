@@ -1,0 +1,20 @@
+C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra Express.AboutBoxPackage\bin\Release\Visual Cobra Express.AboutBoxPackage.dll
+C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra Express.AboutBoxPackage\bin\Release\Visual Cobra Express.AboutBoxPackage.pdb
+C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra Express.AboutBoxPackage\bin\Release\Visual Cobra Express.AboutBoxPackage.pkgdef
+C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra Express.AboutBoxPackage\obj\Release\ResolveAssemblyReference.cache
+C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra Express.AboutBoxPackage\obj\Release\AboutBox.baml
+C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra Express.AboutBoxPackage\obj\Release\AboutBox.g.cs
+C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra Express.AboutBoxPackage\obj\Release\Visual Cobra Express.AboutBoxPackage_MarkupCompile.cache
+C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra Express.AboutBoxPackage\obj\Release\Visual Cobra Express.AboutBoxPackage.g.resources
+C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra Express.AboutBoxPackage\obj\Release\Visual_Cobra_Express.AboutBoxPackage.VSPackage.resources
+C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra Express.AboutBoxPackage\obj\Release\GenerateResource.read.1.tlog
+C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra Express.AboutBoxPackage\obj\Release\GenerateResource.write.1.tlog
+C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra Express.AboutBoxPackage\obj\Release\Visual Cobra Express.AboutBoxPackage.cto
+C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra Express.AboutBoxPackage\obj\Release\VSCT.read.1.tlog
+C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra Express.AboutBoxPackage\obj\Release\VSCT.write.1.tlog
+C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra Express.AboutBoxPackage\obj\Release\Visual_Cobra_Express.AboutBoxPackage.VSPackage.resources.original
+C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra Express.AboutBoxPackage\obj\Release\CtoResourceMerger.cache
+C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra Express.AboutBoxPackage\obj\Release\Visual Cobra Express.AboutBoxPackage.dll
+C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra Express.AboutBoxPackage\obj\Release\Visual Cobra Express.AboutBoxPackage.pdb
+C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra Express.AboutBoxPackage\obj\Release\Visual Cobra Express.AboutBoxPackage.pkgdef
+C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra Express.AboutBoxPackage\obj\Release\Visual Cobra Express.AboutBoxPackage.latest.pkgdef

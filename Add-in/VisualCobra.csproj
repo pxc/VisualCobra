@@ -51,13 +51,6 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="licence.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="readme.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <Reference Include="Cobra.Lang.Compiler2">
       <HintPath>.\Cobra.Lang.Compiler2.dll</HintPath>
     </Reference>

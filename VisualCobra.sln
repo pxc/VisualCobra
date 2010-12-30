@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisualCobra", "VisualCobra.csproj", "{16894B67-4E9E-40E8-BD7A-8C006AB5F3DF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisualCobra", "Add-in\VisualCobra.csproj", "{16894B67-4E9E-40E8-BD7A-8C006AB5F3DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Vsix Version="1.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2010">
+<Vsix xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="1.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2010">
   <Identifier Id="72a2649c-2fb7-497e-91b9-4ce5e9b9ce49">
     <Name>Shell VSIX manifest</Name>
     <Author>Microsoft</Author>
@@ -16,5 +16,6 @@
   <References />
   <Content>
     <VsPackage>|Visual Cobra Express.AboutBoxPackage;PkgdefProjectOutputGroup|</VsPackage>
+    <MefComponent>|VisualCobra|</MefComponent>
   </Content>
 </Vsix>

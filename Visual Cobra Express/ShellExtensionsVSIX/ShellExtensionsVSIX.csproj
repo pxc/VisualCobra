@@ -52,6 +52,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Add-in\VisualCobra.csproj">
+      <Project>{16894B67-4E9E-40E8-BD7A-8C006AB5F3DF}</Project>
+      <Name>VisualCobra</Name>
+      <IncludeOutputGroupsInVSIX>BuiltProjectOutputGroup%3bBuiltProjectOutputGroupDependencies%3bGetCopyToOutputDirectoryItems%3b</IncludeOutputGroupsInVSIX>
+      <IncludeOutputGroupsInVSIXLocalOnly>DebugSymbolsProjectOutputGroup%3b</IncludeOutputGroupsInVSIXLocalOnly>
+    </ProjectReference>
     <ProjectReference Include="..\Visual Cobra Express.AboutBoxPackage\Visual Cobra Express.AboutBoxPackage.csproj">
       <Name>Visual Cobra Express.AboutBoxPackage</Name>
       <IncludeOutputGroupsInVSIX>

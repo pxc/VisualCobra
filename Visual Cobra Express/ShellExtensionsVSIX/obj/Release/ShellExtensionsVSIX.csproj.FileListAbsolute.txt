@@ -5,3 +5,6 @@ C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual 
 C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\ShellExtensionsVSIX\obj\Release\ShellExtensionsVSIX.dll
 C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\ShellExtensionsVSIX\obj\Release\ShellExtensionsVSIX.pdb
 C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\ShellExtensionsVSIX\obj\Release\extension.vsixmanifest
+C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\ShellExtensionsVSIX\bin\Release\VisualCobra.dll
+C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\ShellExtensionsVSIX\bin\Release\Cobra.Lang.Compiler2.dll
+C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\ShellExtensionsVSIX\bin\Release\VisualCobra.pdb

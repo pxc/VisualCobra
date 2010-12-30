@@ -10,11 +10,11 @@ C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual 
 C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra Express.AboutBoxPackage\obj\Debug\GenerateResource.read.1.tlog
 C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra Express.AboutBoxPackage\obj\Debug\GenerateResource.write.1.tlog
 C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra Express.AboutBoxPackage\obj\Debug\Visual Cobra Express.AboutBoxPackage.cto
-C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra Express.AboutBoxPackage\obj\Debug\VSCT.read.1.tlog
-C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra Express.AboutBoxPackage\obj\Debug\VSCT.write.1.tlog
-C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra Express.AboutBoxPackage\obj\Debug\Visual_Cobra_Express.AboutBoxPackage.VSPackage.resources.original
-C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra Express.AboutBoxPackage\obj\Debug\CtoResourceMerger.cache
 C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra Express.AboutBoxPackage\obj\Debug\Visual Cobra Express.AboutBoxPackage.dll
 C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra Express.AboutBoxPackage\obj\Debug\Visual Cobra Express.AboutBoxPackage.pdb
 C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra Express.AboutBoxPackage\obj\Debug\Visual Cobra Express.AboutBoxPackage.pkgdef
 C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra Express.AboutBoxPackage\obj\Debug\Visual Cobra Express.AboutBoxPackage.latest.pkgdef
+C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra Express.AboutBoxPackage\obj\Debug\VSCT.read.1.tlog
+C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra Express.AboutBoxPackage\obj\Debug\VSCT.write.1.tlog
+C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra Express.AboutBoxPackage\obj\Debug\Visual_Cobra_Express.AboutBoxPackage.VSPackage.resources.original
+C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra Express.AboutBoxPackage\obj\Debug\CtoResourceMerger.cache

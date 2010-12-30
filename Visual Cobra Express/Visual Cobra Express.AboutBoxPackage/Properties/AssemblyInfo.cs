@@ -7,12 +7,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("About Box Package")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Visual Studio Express")]
+[assembly: AssemblyDescription("An integrated development environment for the Cobra programming language.\n\nSplash screen image adapted from <http://commons.wikimedia.org/wiki/File:Indiancobra.jpg> (image originally by Kamalnv).")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("About Box Package")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2010")]
+[assembly: AssemblyCompany("Matthew Strawbridge")]
+[assembly: AssemblyProduct("Visual Studio Express")]
+[assembly: AssemblyCopyright("Copyright © Matthew Strawbridge 2010")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

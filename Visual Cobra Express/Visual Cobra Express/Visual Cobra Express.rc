@@ -95,13 +95,13 @@ BEGIN
     BEGIN
         BLOCK "040904b0"
         BEGIN
-            VALUE "CompanyName", "Microsoft"
-            VALUE "FileDescription", "Visual Cobra Express Application"
+            VALUE "CompanyName", "Matthew Strawbridge"
+            VALUE "FileDescription", "Visual Cobra Express"
             VALUE "FileVersion", "1.0.0.1"
             VALUE "InternalName", "Visual Cobra Express"
-            VALUE "LegalCopyright", "(c) 2010 Microsoft.  All rights reserved."
+            VALUE "LegalCopyright", "(c) 2010 Matthew Strawbridge.  All rights reserved."
             VALUE "OriginalFilename", "Visual Cobra Express.exe"
-            VALUE "ProductName", "Visual Cobra Express Application"
+            VALUE "ProductName", "Visual Cobra Express"
             VALUE "ProductVersion", "1.0.0.1"
         END
     END

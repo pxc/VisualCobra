@@ -9,7 +9,7 @@
         <XmlDataProvider x:Key="aboutProvider" XPath="ApplicationInfo" IsAsynchronous="False" IsInitialLoadEnabled="True">
             <x:XData>
                 <ApplicationInfo xmlns="">
-                    <Link Uri="http://www.Microsoft.com">More Info</Link>
+                    <Link Uri="http://cobra-language.com">More Info</Link>
                 </ApplicationInfo>
             </x:XData>
         </XmlDataProvider>

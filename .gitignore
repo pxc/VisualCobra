@@ -2,6 +2,7 @@
 #
 # Based on the example at
 # http://itstuff.jasonsmart.id.au/2010/10/git-and-visual-studio-gitignore-and-git.html
+# and some related Googling.
 
 # User solution and project settings
 *.user
@@ -9,8 +10,11 @@
 *.sln.cache 
 
 # Build output
-[bB]in/
-[oO]bj/ 
+[bB]in
+[Oo]bj
 
-#Test files
-TestResults/
+# Test files
+TestResults
+
+# Misc fluff
+[Tt]humbs.db

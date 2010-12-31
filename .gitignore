@@ -1,0 +1,16 @@
+# Files to exclude from git
+#
+# Based on the example at
+# http://itstuff.jasonsmart.id.au/2010/10/git-and-visual-studio-gitignore-and-git.html
+
+# User solution and project settings
+*.user
+*.suo
+*.sln.cache 
+
+# Build output
+[bB]in/
+[oO]bj/ 
+
+#Test files
+TestResults/

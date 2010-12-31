@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Visual Studio Express")]
-[assembly: AssemblyDescription("An integrated development environment for the Cobra programming language.\n\nSplash screen image adapted from <http://commons.wikimedia.org/wiki/File:Indiancobra.jpg> (image originally by Kamalnv).")]
+[assembly: AssemblyDescription("An integrated development environment for the Cobra programming language.\n\nSplash screen image and icons adapted from <http://commons.wikimedia.org/wiki/File:Indiancobra.jpg> (image originally by Kamalnv).")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Matthew Strawbridge")]
 [assembly: AssemblyProduct("Visual Studio Express")]

@@ -1,7 +1,0 @@
-C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Release\Extensions\Application\\Visual Cobra Express.AboutBoxPackage.dll
-C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Release\Extensions\Application\\extension.vsixmanifest
-C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Release\Extensions\Application\\Visual Cobra Express.AboutBoxPackage.pkgdef
-C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Release\Extensions\Application\\Visual Cobra Express.AboutBoxPackage.pdb
-C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Release\Extensions\Application\\VisualCobra.dll
-C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Release\Extensions\Application\\Cobra.Lang.Compiler2.dll
-C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Release\Extensions\Application\\VisualCobra.pdb

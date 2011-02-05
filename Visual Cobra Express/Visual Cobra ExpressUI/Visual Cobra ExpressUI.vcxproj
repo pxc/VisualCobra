@@ -121,7 +121,9 @@
     <ResourceCompile Include="Visual Cobra ExpressUI.rc" />
   </ItemGroup>
   <ItemGroup>
-    <VSCTCompile Include="ApplicationCommands.vsct" />
+    <VSCTCompile Include="ApplicationCommands.vsct">
+      <SubType>Designer</SubType>
+    </VSCTCompile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\VSSDK\Microsoft.VsSDK.Cpp.targets" />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

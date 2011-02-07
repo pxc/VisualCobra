@@ -238,3 +238,10 @@
 // Class view
 //[$RootKey$\Packages\{C9C0AE26-AA77-11d2-B3F0-0000F87570EE}]
 //[$RootKey$\Packages\{DA9FB551-C724-11d0-AE1F-00A0C90FFFC3}] -- causes exception
+//
+//Note from http://msdn.microsoft.com/en-gb/library/dd891106.aspx
+//In many cases you will not be able to remove an entire feature. For example, there is no package
+//you can unregister to remove the Class View and its associated menus, options, and services. The
+//Class View window itself is provided by the Visual Studio Environment Package, which also provides
+//other key IDE features. In other words, if you wish to remove the Class View, you must also remove
+//the Find and Replace, the Environment Options pages, the Command Window, and the Output Window.

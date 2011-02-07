@@ -17,5 +17,6 @@
   <Content>
     <VsPackage>|Visual Cobra Express.AboutBoxPackage;PkgdefProjectOutputGroup|</VsPackage>
     <MefComponent>|VisualCobra|</MefComponent>
+    <VsPackage>|Visual Cobra Menu;PkgdefProjectOutputGroup|</VsPackage>
   </Content>
 </Vsix>

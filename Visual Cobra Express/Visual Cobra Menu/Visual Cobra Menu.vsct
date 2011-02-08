@@ -79,7 +79,9 @@
 
       <Button guid="guidVisual_Cobra_MenuCmdSet" id="cmdidCobraSettings" priority="0x0100" type="Button">
         <Parent guid="guidVisual_Cobra_MenuCmdSet" id="CobraMenuGroup" />
+        <!--
         <Icon guid="guidImages" id="bmpPic1" />
+        -->
         <Strings>
           <CommandName>cmdidCobraSettings</CommandName>
           <ButtonText>Cobra settings</ButtonText>
@@ -88,7 +90,9 @@
 
       <Button guid="guidVisual_Cobra_MenuCmdSet" id="cmdidCobraRun" priority="0x0100" type="Button">
         <Parent guid="guidVisual_Cobra_MenuCmdSet" id="CobraMenuGroup" />
+        <!--
         <Icon guid="guidImages" id="bmpPic2" />
+        -->
         <Strings>
           <CommandName>cmdidCobraRun</CommandName>
           <ButtonText>Run using Cobra</ButtonText>
@@ -130,6 +134,7 @@
       <IDSymbol name="bmpPicX" value="4" />
       <IDSymbol name="bmpPicArrows" value="5" />
     </GuidSymbol>
+
   </Symbols>
 
 </CommandTable>

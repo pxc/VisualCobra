@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Globalization;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.ComponentModel.Design;
 using Microsoft.Win32;
@@ -30,6 +31,9 @@ namespace VisualCobra.Visual_Cobra_Menu
     // This attribute is needed to let the shell know that this package exposes some menus.
     [ProvideMenuResource("Menus.ctmenu", 1)]
     [Guid(GuidList.guidVisual_Cobra_MenuPkgString)]
+    [ProvideOptionPage(typeof(VisualCobraOptions),
+    "Visual Cobra Options", "Environment",
+    1000, 1001, true)]
     public sealed class Visual_Cobra_MenuPackage : Package
     {
         /// <summary>
@@ -65,12 +69,12 @@ namespace VisualCobra.Visual_Cobra_Menu
             {
                 // Create the command for Cobra settings
                 CommandID menuCobraSettingsCommandID = new CommandID(GuidList.guidVisual_Cobra_MenuCmdSet, (int)PkgCmdIDList.cmdidCobraSettings);
-                MenuCommand menuItemCobraSettings = new MenuCommand(MenuItemCallback, menuCobraSettingsCommandID);
+                MenuCommand menuItemCobraSettings = new MenuCommand(DoCobraSettings, menuCobraSettingsCommandID);
                 mcs.AddCommand(menuItemCobraSettings);
 
                 // Create the command for CobraRun
                 CommandID menuCobraRunCommandID = new CommandID(GuidList.guidVisual_Cobra_MenuCmdSet, (int)PkgCmdIDList.cmdidCobraRun);
-                MenuCommand menuItemCobraRun = new MenuCommand(MenuItemCallback, menuCobraRunCommandID);
+                MenuCommand menuItemCobraRun = new MenuCommand(DoCobraRun, menuCobraRunCommandID);
                 mcs.AddCommand(menuItemCobraRun);
             }
         }
@@ -100,5 +104,76 @@ namespace VisualCobra.Visual_Cobra_Menu
                        0,        // false
                        out result));
         }
+
+        private void DoCobraSettings(object sender, EventArgs e)
+        {
+            EnvDTE.DTE dte = (EnvDTE.DTE)GetService(typeof(EnvDTE.DTE));
+            if (dte != null)
+            {
+                //dte.ExecuteCommand("Tools.Options");
+                dte.ExecuteCommand("Tools.Options", "09ED5841-E5A2-475B-B869-42071B78320A");
+            }
+            else
+            {
+                // dte is null
+                SimpleCobraMessageBox("Could not get DTE");
+            }
+        }
+
+        private void DoCobraRun(object sender, EventArgs e)
+        {
+            // TODO: Save all open files?
+
+            // Development tools extensibility (DTE)
+            EnvDTE.DTE dte = (EnvDTE.DTE)GetService(typeof(EnvDTE.DTE));
+            if (dte != null && dte.ActiveDocument != null)
+            {
+                // get the command to run from the options
+                VisualCobraOptions options = GetDialogPage(typeof(VisualCobraOptions)) as VisualCobraOptions;
+                String rawCommandLine = options.CobraCommandLine;
+                String fullCommandLine = rawCommandLine.Replace("<filename>", '"' + dte.ActiveDocument.Name + '"');
+
+                Process cobraProcess = new Process();
+                cobraProcess.StartInfo.FileName = "cmd";
+                cobraProcess.StartInfo.Arguments = "/k " + fullCommandLine; // /k prevents window closing on termination
+                cobraProcess.StartInfo.CreateNoWindow = false;
+
+                // switch to the source folder to run
+                cobraProcess.StartInfo.WorkingDirectory = dte.ActiveDocument.Path;
+
+                try
+                {
+                    cobraProcess.Start();
+                }
+                catch (Exception ex)
+                {
+                    SimpleCobraMessageBox("Error running Cobra: " + ex.Message);
+                }
+            }
+            else
+            {
+                // either dte is null or there is no active document
+                SimpleCobraMessageBox("No Cobra source file loaded");
+            }
+        }
+
+        private void SimpleCobraMessageBox(String msg)
+        {
+            IVsUIShell uiShell = (IVsUIShell)GetService(typeof(SVsUIShell));
+            Guid clsid = Guid.Empty;
+            int result;
+            uiShell.ShowMessageBox(0,
+                                   ref clsid,
+                                   "Cobra",
+                                   msg,
+                                   string.Empty,
+                                   0,
+                                   OLEMSGBUTTON.OLEMSGBUTTON_OK,
+                                   OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST,
+                                   OLEMSGICON.OLEMSGICON_INFO,
+                                   0,        // false
+                                   out result);
+        }
+    
     }
 }

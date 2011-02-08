@@ -1,4 +1,4 @@
-﻿Build started 07/02/2011 10:26:13.
+﻿Build started 07/02/2011 23:49:02.
      1>Project "C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra Express\Visual Cobra Express.vcxproj" on node 2 (rebuild target(s)).
      1>_PrepareForClean:
          Deleting file "Debug\Visual Cobra Express.lastbuildstate".
@@ -59,4 +59,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:06.29
+Time Elapsed 00:00:09.35

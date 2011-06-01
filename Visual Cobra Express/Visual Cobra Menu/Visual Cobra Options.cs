@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-//using System.Windows.Forms;
 using Microsoft.VisualStudio.Shell;
 
 namespace VisualCobra.Visual_Cobra_Menu
@@ -14,11 +10,11 @@ namespace VisualCobra.Visual_Cobra_Menu
     {
         // use -ert (embed runtime) by default so you can run code in folders that don't
         // contain the Cobra DLL
-        String cobraCommandLine = "cobra -ert <filename>";
+        String _cobraCommandLine = "cobra -ert <filename>";
         public String CobraCommandLine
         {
-            get { return cobraCommandLine; }
-            set { cobraCommandLine = value; }
+            get { return _cobraCommandLine; }
+            set { _cobraCommandLine = value; }
         }        
     }
 }

@@ -1,13 +1,15 @@
-﻿Build started 01/03/2011 19:54:49.
+﻿Build started 01/06/2011 22:50:25.
      1>Project "C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra ExpressUI\Visual Cobra ExpressUI.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Debug\Visual Cobra ExpressUI.unsuccessfulbuild" because "AlwaysCreate" was specified.
        VSCTCompile:
          No out of date dependencies, skipping execution.
+       CreateMenuPkgDef:
+       Skipping target "CreateMenuPkgDef" because all output files are up-to-date with respect to the input files.
        ResourceCompile:
          All outputs are up-to-date.
        ManifestResourceCompile:
-         All outputs are up-to-date.
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"Debug\Visual Cobra ExpressUI.dll.embed.manifest.res" "Debug\Visual Cobra ExpressUI_manifest.rc" 
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Debug\1033\Visual Cobra ExpressUI.dll" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\Visual Cobra ExpressUI.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Debug\1033\Visual Cobra ExpressUI.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /NOENTRY /DYNAMICBASE:NO /IMPLIB:"C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Debug\1033\Visual Cobra ExpressUI.lib" /MACHINE:X86 /DLL "Debug\Visual Cobra ExpressUI.res"
          "Debug\Visual Cobra ExpressUI.dll.embed.manifest.res"
@@ -25,4 +27,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:05.08
+Time Elapsed 00:00:06.59

@@ -1,7 +1,5 @@
-﻿// Copyright (c) 2010 Matthew Strawbridge
-
+﻿// Copyright (c) 2010-2011 Matthew Strawbridge
 using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
@@ -12,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("VisualCobra")]
-[assembly: AssemblyCopyright("Copyright (c) 2010 Matthew Strawbridge")]
+[assembly: AssemblyCopyright("Copyright (c) 2010-2011 Matthew Strawbridge")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

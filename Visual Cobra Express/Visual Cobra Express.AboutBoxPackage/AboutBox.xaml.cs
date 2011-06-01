@@ -1,18 +1,15 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.IO;
 using System.Reflection;
-using System.Windows;
 using System.Windows.Data;
 using System.Xml;
-using Microsoft.VisualStudio.PlatformUI;
 
 namespace Visual_Cobra_Express.AboutBoxPackage
 {
     /// <summary>
     /// Interaction logic for AboutBox.xaml
     /// </summary>
-    public partial class AboutBox : DialogWindow
+    public partial class AboutBox
     {
         /// <summary>
         /// Default constructor.
@@ -25,36 +22,34 @@ namespace Visual_Cobra_Express.AboutBoxPackage
         /// <summary>
         /// Handles click navigation on the hyperlink in the About dialog.
         /// </summary>
-        /// <param name="sender">Object the sent the event.</param>
+        /// <param name="sender">Object that sent the event.</param>
         /// <param name="e">Navigation events arguments.</param>
-        private void hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
+        private void HyperlinkRequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
         {
-            if (e.Uri != null && string.IsNullOrEmpty(e.Uri.OriginalString) == false)
-            {
-                string uri = e.Uri.AbsoluteUri;
-                Process.Start(new ProcessStartInfo(uri));
-                e.Handled = true;
-            }
+            if (e.Uri == null || string.IsNullOrEmpty(e.Uri.OriginalString)) return;
+            var uri = e.Uri.AbsoluteUri;
+            Process.Start(new ProcessStartInfo(uri));
+            e.Handled = true;
         }
 
         #region AboutData Provider
         #region Member data
-        private XmlDocument xmlDoc = null;
+        private XmlDocument _xmlDoc;
 
-        private const string propertyNameTitle = "Title";
-        private const string propertyNameDescription = "Description";
-        private const string propertyNameProduct = "Product";
-        private const string propertyNameCopyright = "Copyright";
-        private const string propertyNameCompany = "Company";
-        private const string xPathRoot = "ApplicationInfo/";
-        private const string xPathTitle = xPathRoot + propertyNameTitle;
-        private const string xPathVersion = xPathRoot + "Version";
-        private const string xPathDescription = xPathRoot + propertyNameDescription;
-        private const string xPathProduct = xPathRoot + propertyNameProduct;
-        private const string xPathCopyright = xPathRoot + propertyNameCopyright;
-        private const string xPathCompany = xPathRoot + propertyNameCompany;
-        private const string xPathLink = xPathRoot + "Link";
-        private const string xPathLinkUri = xPathRoot + "Link/@Uri";
+        private const string PropertyNameTitle = "Title";
+        private const string PropertyNameDescription = "Description";
+        private const string PropertyNameProduct = "Product";
+        private const string PropertyNameCopyright = "Copyright";
+        private const string PropertyNameCompany = "Company";
+        private const string XPathRoot = "ApplicationInfo/";
+        private const string XPathTitle = XPathRoot + PropertyNameTitle;
+        private const string XPathVersion = XPathRoot + "Version";
+        private const string XPathDescription = XPathRoot + PropertyNameDescription;
+        private const string XPathProduct = XPathRoot + PropertyNameProduct;
+        private const string XPathCopyright = XPathRoot + PropertyNameCopyright;
+        private const string XPathCompany = XPathRoot + PropertyNameCompany;
+        private const string XPathLink = XPathRoot + "Link";
+        private const string XPathLinkUri = XPathRoot + "Link/@Uri";
         #endregion
 
         #region Properties
@@ -65,7 +60,7 @@ namespace Visual_Cobra_Express.AboutBoxPackage
         {
             get
             {
-                string result = CalculatePropertyValue<AssemblyTitleAttribute>(propertyNameTitle, xPathTitle);
+                var result = CalculatePropertyValue<AssemblyTitleAttribute>(PropertyNameTitle, XPathTitle);
                 if (string.IsNullOrEmpty(result))
                 {
                     // otherwise, just get the name of the assembly itself.
@@ -82,19 +77,9 @@ namespace Visual_Cobra_Express.AboutBoxPackage
         {
             get
             {
-                string result = string.Empty;
                 // first, try to get the version string from the assembly.
-                Version version = Assembly.GetExecutingAssembly().GetName().Version;
-                if (version != null)
-                {
-                    result = version.ToString();
-                }
-                else
-                {
-                    // if that fails, try to get the version from a resource in the Application.
-                    result = GetLogicalResourceString(xPathVersion);
-                }
-                return result;
+                var ver = Assembly.GetExecutingAssembly().GetName().Version;
+                return ver != null ? ver.ToString() : GetLogicalResourceString(XPathVersion);
             }
         }
 
@@ -103,7 +88,7 @@ namespace Visual_Cobra_Express.AboutBoxPackage
         /// </summary>
         public string Description
         {
-            get { return CalculatePropertyValue<AssemblyDescriptionAttribute>(propertyNameDescription, xPathDescription); }
+            get { return CalculatePropertyValue<AssemblyDescriptionAttribute>(PropertyNameDescription, XPathDescription); }
         }
 
         /// <summary>
@@ -111,7 +96,7 @@ namespace Visual_Cobra_Express.AboutBoxPackage
         /// </summary>
         public string Product
         {
-            get { return CalculatePropertyValue<AssemblyProductAttribute>(propertyNameProduct, xPathProduct); }
+            get { return CalculatePropertyValue<AssemblyProductAttribute>(PropertyNameProduct, XPathProduct); }
         }
 
         /// <summary>
@@ -119,7 +104,7 @@ namespace Visual_Cobra_Express.AboutBoxPackage
         /// </summary>
         public string Copyright
         {
-            get { return CalculatePropertyValue<AssemblyCopyrightAttribute>(propertyNameCopyright, xPathCopyright); }
+            get { return CalculatePropertyValue<AssemblyCopyrightAttribute>(PropertyNameCopyright, XPathCopyright); }
         }
 
         /// <summary>
@@ -127,7 +112,7 @@ namespace Visual_Cobra_Express.AboutBoxPackage
         /// </summary>
         public string Company
         {
-            get { return CalculatePropertyValue<AssemblyCompanyAttribute>(propertyNameCompany, xPathCompany); }
+            get { return CalculatePropertyValue<AssemblyCompanyAttribute>(PropertyNameCompany, XPathCompany); }
         }
 
         /// <summary>
@@ -135,7 +120,7 @@ namespace Visual_Cobra_Express.AboutBoxPackage
         /// </summary>
         public string LinkText
         {
-            get { return GetLogicalResourceString(xPathLink); }
+            get { return GetLogicalResourceString(XPathLink); }
         }
 
         /// <summary>
@@ -143,7 +128,7 @@ namespace Visual_Cobra_Express.AboutBoxPackage
         /// </summary>
         public string LinkUri
         {
-            get { return GetLogicalResourceString(xPathLinkUri); }
+            get { return GetLogicalResourceString(XPathLinkUri); }
         }
         #endregion
 
@@ -158,13 +143,13 @@ namespace Visual_Cobra_Express.AboutBoxPackage
         /// Returns null if no data could be retrieved.</returns>
         private string CalculatePropertyValue<T>(string propertyName, string xpathQuery)
         {
-            string result = string.Empty;
+            var result = string.Empty;
             // first, try to get the property value from an attribute.
-            object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(T), false);
+            var attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(T), false);
             if (attributes.Length > 0)
             {
-                T attrib = (T)attributes[0];
-                PropertyInfo property = attrib.GetType().GetProperty(propertyName, BindingFlags.Public | BindingFlags.Instance);
+                var attrib = (T)attributes[0];
+                var property = attrib.GetType().GetProperty(propertyName, BindingFlags.Public | BindingFlags.Instance);
                 if (property != null)
                 {
                     result = property.GetValue(attributes[0], null) as string;
@@ -187,17 +172,17 @@ namespace Visual_Cobra_Express.AboutBoxPackage
         {
             get
             {
-                if (xmlDoc == null)
+                if (_xmlDoc == null)
                 {
                     // if we haven't already found the resource XmlDocument, then try to find it.
-                    XmlDataProvider provider = this.TryFindResource("aboutProvider") as XmlDataProvider;
+                    var provider = TryFindResource("aboutProvider") as XmlDataProvider;
                     if (provider != null)
                     {
                         // save away the XmlDocument, so we don't have to get it multiple times.
-                        xmlDoc = provider.Document;
+                        _xmlDoc = provider.Document;
                     }
                 }
-                return xmlDoc;
+                return _xmlDoc;
             }
         }
 
@@ -209,13 +194,13 @@ namespace Visual_Cobra_Express.AboutBoxPackage
         /// Returns empty string if resource element couldn't be found.</returns>
         protected virtual string GetLogicalResourceString(string xpathQuery)
         {
-            string result = string.Empty;
+            var result = string.Empty;
             // get the About xml information from the resources.
-            XmlDocument doc = this.ResourceXmlDocument;
+            var doc = ResourceXmlDocument;
             if (doc != null)
             {
                 // if we found the XmlDocument, then look for the specified data. 
-                XmlNode node = doc.SelectSingleNode(xpathQuery);
+                var node = doc.SelectSingleNode(xpathQuery);
                 if (node != null)
                 {
                     if (node is XmlAttribute)

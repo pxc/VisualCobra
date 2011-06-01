@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Reflection;
 using System.Resources;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
@@ -12,7 +11,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Matthew Strawbridge")]
 [assembly: AssemblyProduct("Visual Studio Express")]
-[assembly: AssemblyCopyright("Copyright © Matthew Strawbridge 2010")]
+[assembly: AssemblyCopyright("Copyright © Matthew Strawbridge 2010-2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2010 Matthew Strawbridge
+﻿// Copyright (c) 2010-2011 Matthew Strawbridge
 // See accompanying licence.txt for licence details
 
 using Microsoft.VisualStudio.Text.Classification;
@@ -7,7 +7,7 @@ using System.ComponentModel.Composition;
 using System.Windows;
 using System.Windows.Media;
 
-namespace VisualCobra
+namespace VisualCobra.Classification
 {
     #region Format definition
     /// <summary>
@@ -25,8 +25,8 @@ namespace VisualCobra
         /// </summary>
         public CobraKeywordFormat()
         {
-            this.DisplayName = "CobraKeywordFormat";
-            this.ForegroundColor = Colors.Blue;
+            DisplayName = "CobraKeywordFormat";
+            ForegroundColor = Colors.Blue;
         }
     }
 
@@ -45,8 +45,8 @@ namespace VisualCobra
         /// </summary>
         public CobraCommentFormat()
         {
-            this.DisplayName = "CobraCommentFormat";
-            this.ForegroundColor = Colors.Green;
+            DisplayName = "CobraCommentFormat";
+            ForegroundColor = Colors.Green;
         }
     }
 
@@ -65,8 +65,8 @@ namespace VisualCobra
         /// </summary>
         public CobraStringFormat()
         {
-            this.DisplayName = "CobraStringFormat";
-            this.ForegroundColor = Colors.Brown;
+            DisplayName = "CobraStringFormat";
+            ForegroundColor = Colors.Brown;
         }
     }
 
@@ -85,8 +85,8 @@ namespace VisualCobra
         /// </summary>
         public CobraClassFormat()
         {
-            this.DisplayName = "CobraClassFormat";
-            this.ForegroundColor = Colors.CornflowerBlue;
+            DisplayName = "CobraClassFormat";
+            ForegroundColor = Colors.CornflowerBlue;
         }
     }
 
@@ -105,20 +105,18 @@ namespace VisualCobra
         /// </summary>
         public CobraIndentErrorFormat()
         {
-            this.DisplayName = "CobraIndentErrorFormat";
+            DisplayName = "CobraIndentErrorFormat";
 
-            TextDecoration myUnderline = new TextDecoration();
+            var myUnderline = new TextDecoration();
 
-            Pen orangePen = new Pen(new SolidColorBrush(Colors.Orange), 1.0);
-            orangePen.DashStyle = DashStyles.Dot;
+            var orangePen = new Pen(new SolidColorBrush(Colors.Orange), 1.0) {DashStyle = DashStyles.Dot};
 
             myUnderline.Pen = orangePen;
             myUnderline.PenThicknessUnit = TextDecorationUnit.FontRecommended;
 
-            TextDecorationCollection myCollection = new TextDecorationCollection();
-            myCollection.Add(myUnderline);
+            var myCollection = new TextDecorationCollection {myUnderline};
 
-            this.TextDecorations = myCollection;
+            TextDecorations = myCollection;
         }
     }
 

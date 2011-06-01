@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Globalization;
-using System.IO;
 using System.Runtime.InteropServices;
 using System.ComponentModel.Design;
-using Microsoft.Win32;
-using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.Shell.Interop;
-using Microsoft.VisualStudio.OLE.Interop;
 using Microsoft.VisualStudio.Shell;
 
 namespace VisualCobra.Visual_Cobra_Menu
@@ -30,11 +26,11 @@ namespace VisualCobra.Visual_Cobra_Menu
     [InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400)]
     // This attribute is needed to let the shell know that this package exposes some menus.
     [ProvideMenuResource("Menus.ctmenu", 1)]
-    [Guid(GuidList.guidVisual_Cobra_MenuPkgString)]
+    [Guid(GuidList.GuidVisualCobraMenuPkgString)]
     [ProvideOptionPage(typeof(VisualCobraOptions),
     "Visual Cobra Options", "Environment",
     1000, 1001, true)]
-    public sealed class Visual_Cobra_MenuPackage : Package
+    public sealed class VisualCobraMenuPackage : Package
     {
         /// <summary>
         /// Default constructor of the package.
@@ -43,9 +39,9 @@ namespace VisualCobra.Visual_Cobra_Menu
         /// not sited yet inside Visual Studio environment. The place to do all the other 
         /// initialization is the Initialize method.
         /// </summary>
-        public Visual_Cobra_MenuPackage()
+        public VisualCobraMenuPackage()
         {
-            Trace.WriteLine(string.Format(CultureInfo.CurrentCulture, "Entering constructor for: {0}", this.ToString()));
+            Trace.WriteLine(string.Format(CultureInfo.CurrentCulture, "Entering constructor for: {0}", ToString()));
         }
 
 
@@ -60,23 +56,21 @@ namespace VisualCobra.Visual_Cobra_Menu
         /// </summary>
         protected override void Initialize()
         {
-            Trace.WriteLine (string.Format(CultureInfo.CurrentCulture, "Entering Initialize() of: {0}", this.ToString()));
+            Trace.WriteLine (string.Format(CultureInfo.CurrentCulture, "Entering Initialize() of: {0}", ToString()));
             base.Initialize();
 
             // Add our command handlers for menu (commands must exist in the .vsct file)
-            OleMenuCommandService mcs = GetService(typeof(IMenuCommandService)) as OleMenuCommandService;
-            if (null != mcs)
-            {
-                // Create the command for Cobra settings
-                CommandID menuCobraSettingsCommandID = new CommandID(GuidList.guidVisual_Cobra_MenuCmdSet, (int)PkgCmdIDList.cmdidCobraSettings);
-                MenuCommand menuItemCobraSettings = new MenuCommand(DoCobraSettings, menuCobraSettingsCommandID);
-                mcs.AddCommand(menuItemCobraSettings);
+            var mcs = GetService(typeof(IMenuCommandService)) as OleMenuCommandService;
+            if (null == mcs) return;
+            // Create the command for Cobra settings
+            var menuCobraSettingsCommandID = new CommandID(GuidList.GuidVisualCobraMenuCmdSet, (int)PkgCmdIDList.CmdIDCobraSettings);
+            var menuItemCobraSettings = new MenuCommand(DoCobraSettings, menuCobraSettingsCommandID);
+            mcs.AddCommand(menuItemCobraSettings);
 
-                // Create the command for CobraRun
-                CommandID menuCobraRunCommandID = new CommandID(GuidList.guidVisual_Cobra_MenuCmdSet, (int)PkgCmdIDList.cmdidCobraRun);
-                MenuCommand menuItemCobraRun = new MenuCommand(DoCobraRun, menuCobraRunCommandID);
-                mcs.AddCommand(menuItemCobraRun);
-            }
+            // Create the command for CobraRun
+            var menuCobraRunCommandID = new CommandID(GuidList.GuidVisualCobraMenuCmdSet, (int)PkgCmdIDList.CmdIDCobraRun);
+            var menuItemCobraRun = new MenuCommand(DoCobraRun, menuCobraRunCommandID);
+            mcs.AddCommand(menuItemCobraRun);
         }
         #endregion
 
@@ -85,17 +79,21 @@ namespace VisualCobra.Visual_Cobra_Menu
         /// See the Initialize method to see how the menu item is associated to this function using
         /// the OleMenuCommandService service and the MenuCommand class.
         /// </summary>
+// ReSharper disable UnusedMember.Local
+// ReSharper disable UnusedParameter.Local
         private void MenuItemCallback(object sender, EventArgs e)
+// ReSharper restore UnusedParameter.Local
+// ReSharper restore UnusedMember.Local
         {
             // Show a Message Box to prove we were here
-            IVsUIShell uiShell = (IVsUIShell)GetService(typeof(SVsUIShell));
-            Guid clsid = Guid.Empty;
+            var uiShell = (IVsUIShell)GetService(typeof(SVsUIShell));
+            var clsid = Guid.Empty;
             int result;
             Microsoft.VisualStudio.ErrorHandler.ThrowOnFailure(uiShell.ShowMessageBox(
                        0,
                        ref clsid,
                        "Visual Cobra Menu",
-                       string.Format(CultureInfo.CurrentCulture, "Inside {0}.MenuItemCallback() called from 0x{1:X}", this.ToString(), ((MenuCommand)sender).CommandID.ID),
+                       string.Format(CultureInfo.CurrentCulture, "Inside {0}.MenuItemCallback() called from 0x{1:X}", ToString(), ((MenuCommand)sender).CommandID.ID),
                        string.Empty,
                        0,
                        OLEMSGBUTTON.OLEMSGBUTTON_OK,
@@ -107,7 +105,7 @@ namespace VisualCobra.Visual_Cobra_Menu
 
         private void DoCobraSettings(object sender, EventArgs e)
         {
-            EnvDTE.DTE dte = (EnvDTE.DTE)GetService(typeof(EnvDTE.DTE));
+            var dte = (EnvDTE.DTE)GetService(typeof(EnvDTE.DTE));
             if (dte != null)
             {
                 //dte.ExecuteCommand("Tools.Options");
@@ -125,29 +123,37 @@ namespace VisualCobra.Visual_Cobra_Menu
             // TODO: Save all open files?
 
             // Development tools extensibility (DTE)
-            EnvDTE.DTE dte = (EnvDTE.DTE)GetService(typeof(EnvDTE.DTE));
+            var dte = (EnvDTE.DTE)GetService(typeof(EnvDTE.DTE));
             if (dte != null && dte.ActiveDocument != null)
             {
                 // get the command to run from the options
-                VisualCobraOptions options = GetDialogPage(typeof(VisualCobraOptions)) as VisualCobraOptions;
-                String rawCommandLine = options.CobraCommandLine;
-                String fullCommandLine = rawCommandLine.Replace("<filename>", '"' + dte.ActiveDocument.Name + '"');
-
-                Process cobraProcess = new Process();
-                cobraProcess.StartInfo.FileName = "cmd";
-                cobraProcess.StartInfo.Arguments = "/k " + fullCommandLine; // /k prevents window closing on termination
-                cobraProcess.StartInfo.CreateNoWindow = false;
-
-                // switch to the source folder to run
-                cobraProcess.StartInfo.WorkingDirectory = dte.ActiveDocument.Path;
-
-                try
+                var options = GetDialogPage(typeof(VisualCobraOptions)) as VisualCobraOptions;
+                if (options != null)
                 {
-                    cobraProcess.Start();
-                }
-                catch (Exception ex)
-                {
-                    SimpleCobraMessageBox("Error running Cobra: " + ex.Message);
+                    var rawCommandLine = options.CobraCommandLine;
+                    var fullCommandLine = rawCommandLine.Replace("<filename>", '"' + dte.ActiveDocument.Name + '"');
+
+                    var cobraProcess = new Process
+                                           {
+                                               StartInfo =
+                                                   {
+                                                       FileName = "cmd",
+                                                       Arguments = "/k " + fullCommandLine,
+                                                       CreateNoWindow = false,
+                                                       WorkingDirectory = dte.ActiveDocument.Path
+                                                   }
+                                           };
+
+                    // switch to the source folder to run
+
+                    try
+                    {
+                        cobraProcess.Start();
+                    }
+                    catch (Exception ex)
+                    {
+                        SimpleCobraMessageBox("Error running Cobra: " + ex.Message);
+                    }
                 }
             }
             else
@@ -159,8 +165,8 @@ namespace VisualCobra.Visual_Cobra_Menu
 
         private void SimpleCobraMessageBox(String msg)
         {
-            IVsUIShell uiShell = (IVsUIShell)GetService(typeof(SVsUIShell));
-            Guid clsid = Guid.Empty;
+            var uiShell = (IVsUIShell)GetService(typeof(SVsUIShell));
+            var clsid = Guid.Empty;
             int result;
             uiShell.ShowMessageBox(0,
                                    ref clsid,

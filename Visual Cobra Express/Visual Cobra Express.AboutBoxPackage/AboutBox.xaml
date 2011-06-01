@@ -6,6 +6,7 @@
     x:Uid="idAboutBox"
     Style="{DynamicResource AboutDialogStyle}" WindowStartupLocation="CenterOwner">
     <Window.Resources>
+        <!-- The following _is_ used, despite what ReSharper says -->
         <XmlDataProvider x:Key="aboutProvider" XPath="ApplicationInfo" IsAsynchronous="False" IsInitialLoadEnabled="True">
             <x:XData>
                 <ApplicationInfo xmlns="">
@@ -70,7 +71,7 @@
                         Content="OK" />
                 <Label x:Name="productLink" x:Uid="productLink" Style="{StaticResource LinkLabelStyle}" >
                     <Hyperlink x:Name="hyperlink" x:Uid="hyperlink" NavigateUri="{Binding Mode=OneTime, Path=LinkUri}"  Style="{StaticResource LinkLabelStyle}"
-                               Hyperlink.RequestNavigate="hyperlink_RequestNavigate">
+                               Hyperlink.RequestNavigate="HyperlinkRequestNavigate">
                         <TextBlock Text="{Binding Mode=OneTime, Path=LinkText}" />
                     </Hyperlink>
                 </Label>

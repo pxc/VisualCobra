@@ -1,11 +1,8 @@
 ﻿using System;
+using System.ComponentModel.Design;
 using System.Diagnostics;
 using System.Globalization;
 using System.Runtime.InteropServices;
-using System.ComponentModel.Design;
-using Microsoft.Win32;
-using Microsoft.VisualStudio.Shell.Interop;
-using Microsoft.VisualStudio.OLE.Interop;
 using Microsoft.VisualStudio.Shell;
 
 namespace Visual_Cobra_Express.AboutBoxPackage
@@ -25,7 +22,7 @@ namespace Visual_Cobra_Express.AboutBoxPackage
     [PackageRegistration(UseManagedResourcesOnly = true)]
     // This attribute is needed to let the shell know that this package exposes some menus.
     [ProvideMenuResource("Menus.ctmenu", 1)]
-    [Guid(GuidList.guidAboutBoxPackagePkgString)]
+    [Guid(GuidList.GuidAboutBoxPackagePkgString)]
     public sealed class AboutBoxPackage : Package
     {
         /// <summary>
@@ -37,7 +34,7 @@ namespace Visual_Cobra_Express.AboutBoxPackage
         /// </summary>
         public AboutBoxPackage()
         {
-            Trace.WriteLine(string.Format(CultureInfo.CurrentCulture, "Entering constructor for: {0}", this.ToString()));
+            Trace.WriteLine(string.Format(CultureInfo.CurrentCulture, "Entering constructor for: {0}", ToString()));
         }
 
 
@@ -52,18 +49,16 @@ namespace Visual_Cobra_Express.AboutBoxPackage
         /// </summary>
         protected override void Initialize()
         {
-            Trace.WriteLine(string.Format(CultureInfo.CurrentCulture, "Entering Initialize() of: {0}", this.ToString()));
+            Trace.WriteLine(string.Format(CultureInfo.CurrentCulture, "Entering Initialize() of: {0}", ToString()));
             base.Initialize();
 
             // Add our command handlers for menu (commands must exist in the .vsct file)
-            OleMenuCommandService mcs = GetService(typeof(IMenuCommandService)) as OleMenuCommandService;
-            if (null != mcs)
-            {
-                // Create the command for the menu item.
-                CommandID menuCommandID = new CommandID(GuidList.guidAboutBoxPackageCmdSet, (int)PkgCmdIDList.cmdidHelpAbout);
-                MenuCommand menuItem = new MenuCommand(MenuItemCallback, menuCommandID);
-                mcs.AddCommand(menuItem);
-            }
+            var mcs = GetService(typeof(IMenuCommandService)) as OleMenuCommandService;
+            if (null == mcs) return;
+            // Create the command for the menu item.
+            var menuCommandID = new CommandID(GuidList.GuidAboutBoxPackageCmdSet, (int)PkgCmdIDList.CmdIDHelpAbout);
+            var menuItem = new MenuCommand(MenuItemCallback, menuCommandID);
+            mcs.AddCommand(menuItem);
         }
         #endregion
 
@@ -72,9 +67,9 @@ namespace Visual_Cobra_Express.AboutBoxPackage
         /// See the Initialize method to see how the menu item is associated to this function using
         /// the OleMenuCommandService service and the MenuCommand class.
         /// </summary>
-        private void MenuItemCallback(object sender, EventArgs e)
+        private static void MenuItemCallback(object sender, EventArgs e)
         {
-            AboutBox aboutBox = new AboutBox();
+            var aboutBox = new AboutBox();
             aboutBox.ShowModal();
         }
 

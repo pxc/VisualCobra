@@ -99,7 +99,7 @@ BEGIN
             VALUE "FileDescription", "Visual Cobra Express"
             VALUE "FileVersion", "1.0.0.1"
             VALUE "InternalName", "Visual Cobra Express"
-            VALUE "LegalCopyright", "(c) 2010 Matthew Strawbridge.  All rights reserved."
+            VALUE "LegalCopyright", "(c) 2010-2011 Matthew Strawbridge.  All rights reserved."
             VALUE "OriginalFilename", "Visual Cobra Express.exe"
             VALUE "ProductName", "Visual Cobra Express"
             VALUE "ProductVersion", "1.0.0.1"

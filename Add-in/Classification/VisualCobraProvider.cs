@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2010 Matthew Strawbridge
+﻿// Copyright (c) 2010-2011 Matthew Strawbridge
 // See accompanying licence.txt for licence details
 
 using Microsoft.VisualStudio.Text;
@@ -22,12 +22,13 @@ namespace VisualCobra.Classification
         /// to the custom classification type later.
         /// </summary>
         [Import]
-        internal IClassificationTypeRegistryService ClassificationRegistry = null; // Set via MEF
+        internal IClassificationTypeRegistryService ClassificationRegistry; // Set via MEF
 
         public IClassifier GetClassifier(ITextBuffer buffer)
         {
             //Trace.WriteLine("In GetClassifier()");
-            return buffer.Properties.GetOrCreateSingletonProperty<VisualCobra>(delegate { return new VisualCobra(ClassificationRegistry); });
+            return buffer.Properties.GetOrCreateSingletonProperty(
+                () => new VisualCobra(ClassificationRegistry));
         }
     }
     #endregion //provider def

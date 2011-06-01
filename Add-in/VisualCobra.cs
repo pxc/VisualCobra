@@ -1,6 +1,7 @@
-﻿// Copyright (c) 2010 Matthew Strawbridge
+﻿// Copyright (c) 2010-2011 Matthew Strawbridge
 // See accompanying licence.txt for licence details
 
+using System.Linq;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Classification;
 using System;
@@ -22,7 +23,7 @@ namespace VisualCobra
     /// </summary>
     class VisualCobra : IClassifier
     {
-        public const String multiLineCommentDelimiter = "\"\"\""; // three quotes
+        public const String MultiLineCommentDelimiter = "\"\"\""; // three quotes
 
         /// <summary>
         /// Cache multi-line comment spans for each snapshot so we don't have to
@@ -31,7 +32,7 @@ namespace VisualCobra
         /// _commentCache will always have at most one entry. But it's a Dictionary
         /// so we can more easily test that this assumption is true.
         /// </summary>
-        protected IDictionary<ITextSnapshot, IList<Span>> _commentCache;
+        protected IDictionary<ITextSnapshot, IList<Span>> CommentCache;
 
         private static IClassificationType _cobraKeywordClassificationType;
         private static IClassificationType _cobraCommentClassificationType;
@@ -42,7 +43,7 @@ namespace VisualCobra
         internal VisualCobra(IClassificationTypeRegistryService registry)
         {
             // initialise member data
-            _commentCache = new Dictionary<ITextSnapshot, IList<Span>>();
+            CommentCache = new Dictionary<ITextSnapshot, IList<Span>>();
 
             _cobraKeywordClassificationType = registry.GetClassificationType("CobraKeyword");
             _cobraCommentClassificationType = registry.GetClassificationType("CobraComment");
@@ -51,7 +52,7 @@ namespace VisualCobra
             _cobraIndentErrorClassificationType = registry.GetClassificationType("CobraIndentError");
         }
 
-        protected static bool isClass(IToken tok)
+        protected static bool IsClass(IToken tok)
         {
             return tok != null && tok.Which == "ID" && tok.Text.Length > 0 && Char.IsUpper(tok.Text[0]);
         }
@@ -65,50 +66,50 @@ namespace VisualCobra
         protected IList<Span> GetMultiLineComments(SnapshotSpan span)
         {
             // use cache
-            if (_commentCache.ContainsKey(span.Snapshot))
-                return _commentCache[span.Snapshot];
+            if (CommentCache.ContainsKey(span.Snapshot))
+                return CommentCache[span.Snapshot];
 
-            List<Span> multiLineComments = new List<Span>();
+            var multiLineComments = new List<Span>();
 
-            String text = span.Snapshot.GetText();
+            var text = span.Snapshot.GetText();
 
-            int commentStart = 0 - multiLineCommentDelimiter.Length;
-            int commentEnd = 0 - multiLineCommentDelimiter.Length;
+            // ReSharper disable RedundantAssignment
+            var commentStart = 0 - MultiLineCommentDelimiter.Length;
+            var commentEnd = 0 - MultiLineCommentDelimiter.Length;
+            // ReSharper restore RedundantAssignment
 
             do
             {
-                commentStart = text.IndexOf(multiLineCommentDelimiter, commentEnd + multiLineCommentDelimiter.Length);
-                if (commentStart > -1)
+                commentStart = text.IndexOf(MultiLineCommentDelimiter, commentEnd + MultiLineCommentDelimiter.Length);
+                if (commentStart <= -1) continue;
+                commentEnd = text.IndexOf(MultiLineCommentDelimiter, commentStart + MultiLineCommentDelimiter.Length);
+                if (commentEnd == -1)
                 {
-                    commentEnd = text.IndexOf(multiLineCommentDelimiter, commentStart + multiLineCommentDelimiter.Length);
-                    if (commentEnd == -1)
-                    {
-                        commentEnd = text.Length; // if there's no end then run to end of file
-                    }
-                    else
-                    {
-                        commentEnd += multiLineCommentDelimiter.Length;
-                    }
-                    multiLineComments.Add(Span.FromBounds(commentStart, commentEnd));
-                    Debug.Assert(commentEnd > commentStart);
+                    commentEnd = text.Length; // if there's no end then run to end of file
                 }
+                else
+                {
+                    commentEnd += MultiLineCommentDelimiter.Length;
+                }
+                multiLineComments.Add(Span.FromBounds(commentStart, commentEnd));
+                Debug.Assert(commentEnd > commentStart);
             } while (commentStart > -1 && commentEnd > -1 && commentEnd < text.Length);
 
             // Remove the cached version if there is one
-            if (_commentCache.Count > 0)
+            if (CommentCache.Count > 0)
             {
-                ITextBuffer buffer = span.Snapshot.TextBuffer;
-                Debug.Assert(_commentCache.Count == 1);
+                var buffer = span.Snapshot.TextBuffer;
+                Debug.Assert(CommentCache.Count == 1);
                 // existing entry should refer to the same text buffer
-                IEnumerator<ITextSnapshot> e = _commentCache.Keys.GetEnumerator();
+                var e = CommentCache.Keys.GetEnumerator();
                 e.MoveNext();
                 Debug.Assert(buffer.Equals(e.Current.TextBuffer));
-                _commentCache.Remove(e.Current);
-                Debug.Assert(_commentCache.Count == 0);
+                CommentCache.Remove(e.Current);
+                Debug.Assert(CommentCache.Count == 0);
             }
 
             // add to cache so we don't have to calculate it again for this snapshot
-            _commentCache[span.Snapshot] = multiLineComments;
+            CommentCache[span.Snapshot] = multiLineComments;
 
             return multiLineComments;
         }
@@ -121,55 +122,51 @@ namespace VisualCobra
         /// <returns>A list of error spans</returns>
         public IList<ClassificationSpan> GetIndentErrorSpans(SnapshotSpan span)
         {
-            IList<ClassificationSpan> spans = new List<ClassificationSpan>();
+            var text = span.GetText();
 
-            string text = span.GetText();
+            var r = new Regex("(\t+ )|( +\t)");
 
-            Regex r = new Regex("(\t+ )|( +\t)");
-
-            foreach (Match m in r.Matches(text))
-            {
-                spans.Add(new ClassificationSpan(new SnapshotSpan(span.Snapshot, span.Start + m.Index + m.Length - 1, 1), _cobraIndentErrorClassificationType));
-            }
-
-            return spans;
+            return (from Match m in r.Matches(text)
+                    select new ClassificationSpan(new SnapshotSpan(span.Snapshot, span.Start + m.Index + m.Length - 1, 1), _cobraIndentErrorClassificationType)).ToList();
         }
 
 
         /// <summary>
         /// This method scans the given SnapshotSpan for potential matches for this classification.
         /// </summary>
-        /// <param name="trackingSpan">The span currently being classified</param>
+        /// <param name="span">The span currently being classified</param>
         /// <returns>A list of ClassificationSpans that represent spans identified to be of this classification</returns>
         public IList<ClassificationSpan> GetClassificationSpans(SnapshotSpan span)
         {
             // TODO: this is an inefficient call to GetMultiLineComments each time!
-            IList<Span> multiLineComments = GetMultiLineComments(span);
+            var multiLineComments = GetMultiLineComments(span);
 
             //create a list to hold the results
-            List<ClassificationSpan> classifications = new List<ClassificationSpan>();
+            var classifications = new List<ClassificationSpan>();
 
-            Compiler compiler = new Compiler();
+            var compiler = new Compiler();
             compiler.Options.Add("number", "float");
 
             // Use Cobra's own tokenizer
-            VisualCobraTokenizer tokCobra = new VisualCobraTokenizer();
-            tokCobra.TypeProvider = compiler;
-            tokCobra.WillReturnComments = true;
-            tokCobra.WillReturnDirectives = true;
-            
+            var tokCobra = new VisualCobraTokenizer
+                               {
+                                   TypeProvider = compiler,
+                                   WillReturnComments = true,
+                                   WillReturnDirectives = true
+                               };
+
             Node.SetCompiler(compiler);
             tokCobra.StartSource(span.GetText());
             
-            List<IToken> toks = tokCobra.AllTokens();
+            var toks = tokCobra.AllTokens();
 
             IToken previous = null;
-            foreach (IToken tok in toks)
+            foreach (var tok in toks)
             {
                 if (tok.IsKeyword)
                 {
                     var tokenSpan = new SnapshotSpan(span.Snapshot, new Span(span.Start.Position + tok.CharNum - 1, tok.Length)); // +1
-                    ClassificationSpan cs = new ClassificationSpan(tokenSpan, _cobraKeywordClassificationType);
+                    var cs = new ClassificationSpan(tokenSpan, _cobraKeywordClassificationType);
                     classifications.Add(cs);
                 }
                 else
@@ -183,29 +180,29 @@ namespace VisualCobra
                             {
                                 // extend the span to include the surrounding single or double quotes
                                 var tokenSpan = new SnapshotSpan(span.Snapshot, new Span(span.Start.Position + tok.CharNum - 1, tok.Length));
-                                ClassificationSpan cs = new ClassificationSpan(tokenSpan, _cobraStringClassificationType);
+                                var cs = new ClassificationSpan(tokenSpan, _cobraStringClassificationType);
                                 classifications.Add(cs);
                             }
                             break;
                         case "ID": // Note "CLASS" is the class keyword, not "a class"
                             {
 
-                                if (isClass(tok))
+                                if (IsClass(tok))
                                 {
                                     // it starts upper case so, in Cobra, it's a class                                    
                                     var tokenSpan = new SnapshotSpan(span.Snapshot, new Span(span.Start.Position + tok.CharNum - 1, tok.Length));
-                                    ClassificationSpan cs = new ClassificationSpan(tokenSpan, _cobraClassClassificationType);
+                                    var cs = new ClassificationSpan(tokenSpan, _cobraClassClassificationType);
                                     classifications.Add(cs);
                                 }
                             }
                             break;
                         case "QUESTION":
                             {
-                                if (isClass(previous))
+                                if (IsClass(previous))
                                 {
                                     // add another char to cover the ? on the end of a nillable class                                   
                                     var tokenSpan = new SnapshotSpan(span.Snapshot, new Span(span.Start.Position + tok.CharNum - 1, 1));
-                                    ClassificationSpan cs = new ClassificationSpan(tokenSpan, _cobraClassClassificationType);
+                                    var cs = new ClassificationSpan(tokenSpan, _cobraClassClassificationType);
                                     classifications.Add(cs);
                                 }
                                 break;
@@ -213,7 +210,7 @@ namespace VisualCobra
                         case "COMMENT":
                             {
                                 var tokenSpan = new SnapshotSpan(span.Snapshot, new Span(span.Start.Position + tok.CharNum - 1, tok.Length));
-                                ClassificationSpan cs = new ClassificationSpan(tokenSpan, _cobraCommentClassificationType);
+                                var cs = new ClassificationSpan(tokenSpan, _cobraCommentClassificationType);
                                 classifications.Add(cs);
                             }
                             break;
@@ -225,33 +222,28 @@ namespace VisualCobra
             // Add classification spans for indent errors
             classifications.AddRange(GetIndentErrorSpans(span));
 
-            List<ClassificationSpan> removeMe = new List<ClassificationSpan>();
-            List<ClassificationSpan>.Enumerator e = classifications.GetEnumerator();
+            var removeMe = new List<ClassificationSpan>();
+            var e = classifications.GetEnumerator();
             while (e.MoveNext())
             {
-                foreach (Span comment in multiLineComments)
+                if (e.Current != null)
                 {
-                    if (comment.Contains(e.Current.Span))
-                    {
-                        // Can't do this while looping through...
-                        // classifications.Remove(e.Current);
-                        // ... so add to a list and remove afterwards
-                        removeMe.Add(e.Current);
-                    }
+                    removeMe.AddRange(from comment in multiLineComments
+// ReSharper disable PossibleNullReferenceException
+                                      where comment.Contains(e.Current.Span)
+// ReSharper restore PossibleNullReferenceException
+                                      select e.Current);
                 }
             }
 
-            foreach (ClassificationSpan remove in removeMe)
+            foreach (var remove in removeMe)
             {
                 classifications.Remove(remove);
             }
 
             // Add all comment spans
             // TODO: Many of these will be out of bounds, so they should perhaps be trimmed down first
-            foreach (Span comment in multiLineComments)
-            {
-                classifications.Add(new ClassificationSpan(new SnapshotSpan(span.Snapshot, comment), _cobraCommentClassificationType));
-            }
+            classifications.AddRange(multiLineComments.Select(comment => new ClassificationSpan(new SnapshotSpan(span.Snapshot, comment), _cobraCommentClassificationType)));
 
             return classifications;
         }

@@ -1,4 +1,4 @@
-﻿Build started 08/03/2011 21:17:08.
+﻿Build started 02/06/2011 00:08:35.
      1>Project "C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra Express\Visual Cobra Express.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Release\Visual Cobra Express.unsuccessfulbuild" because "AlwaysCreate" was specified.
@@ -36,4 +36,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:24.43
+Time Elapsed 00:00:07.92

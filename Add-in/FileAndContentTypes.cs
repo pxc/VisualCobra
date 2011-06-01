@@ -1,7 +1,6 @@
-﻿// Copyright (c) 2010 Matthew Strawbridge
+﻿// Copyright (c) 2010-2011 Matthew Strawbridge
 // See accompanying licence.txt for licence details
 
-using Microsoft.VisualStudio.Text.Classification;
 using Microsoft.VisualStudio.Utilities;
 using System.ComponentModel.Composition;
 
@@ -17,12 +16,12 @@ namespace VisualCobra
             [Export]
             [Name("cobra")]
             [BaseDefinition("text")]
-            internal static ContentTypeDefinition cobraContentTypeDefinition = null;
+            internal static ContentTypeDefinition CobraContentTypeDefinition;
 
             [Export]
             [FileExtension(".cobra")]
             [ContentType("cobra")]
-            internal static FileExtensionToContentTypeDefinition cobraFileExtensionDefinition = null;
+            internal static FileExtensionToContentTypeDefinition CobraFileExtensionDefinition;
         }
     }
 }

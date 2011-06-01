@@ -1,11 +1,11 @@
-﻿// Copyright (c) 2010 Matthew Strawbridge
+﻿// Copyright (c) 2010-2011 Matthew Strawbridge
 // See accompanying licence.txt for licence details
 
 using Microsoft.VisualStudio.Text.Classification;
 using Microsoft.VisualStudio.Utilities;
 using System.ComponentModel.Composition;
 
-namespace VisualCobra
+namespace VisualCobra.Classification
 {
     internal static class VisualCobraClassificationDefinition
     {
@@ -14,34 +14,34 @@ namespace VisualCobra
         /// </summary>
         [Export(typeof(ClassificationTypeDefinition))]
         [Name("CobraKeyword")]
-        internal static ClassificationTypeDefinition CobraKeywordType = null;
+        internal static ClassificationTypeDefinition CobraKeywordType;
 
         /// <summary>
         /// Defines the "CobraComment" classification type.
         /// </summary>
         [Export(typeof(ClassificationTypeDefinition))]
         [Name("CobraComment")]
-        internal static ClassificationTypeDefinition CobraCommentType = null;
+        internal static ClassificationTypeDefinition CobraCommentType;
 
         /// <summary>
         /// Defines the "CobraString" classification type.
         /// </summary>
         [Export(typeof(ClassificationTypeDefinition))]
         [Name("CobraString")]
-        internal static ClassificationTypeDefinition CobraStringType = null;
+        internal static ClassificationTypeDefinition CobraStringType;
 
         /// <summary>
         /// Defines the "CobraClass" classification type.
         /// </summary>
         [Export(typeof(ClassificationTypeDefinition))]
         [Name("CobraClass")]
-        internal static ClassificationTypeDefinition CobraClassType = null;
+        internal static ClassificationTypeDefinition CobraClassType;
 
         /// <summary>
         /// Defines the "CobraIndentError" classification type.
         /// </summary>
         [Export(typeof(ClassificationTypeDefinition))]
         [Name("CobraIndentError")]
-        internal static ClassificationTypeDefinition CobraIndentErrorType = null;
+        internal static ClassificationTypeDefinition CobraIndentErrorType;
     }
 }

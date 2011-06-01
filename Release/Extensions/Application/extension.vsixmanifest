@@ -17,5 +17,6 @@
   <Content>
     <VsPackage>Visual Cobra Express.AboutBoxPackage.pkgdef</VsPackage>
     <MefComponent>VisualCobra.dll</MefComponent>
+    <VsPackage>Visual Cobra Menu.pkgdef</VsPackage>
   </Content>
 </Vsix>

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VSTemplate Version="3.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+  <TemplateData>
+    <Name>CobraHelloWorld</Name>
+    <Description>Very simple Cobra program for printing Hello World</Description>
+    <Icon>CobraHelloWorld.ico</Icon>
+    <TemplateID>dce95601-17e0-4364-825d-62f34f6ac67c</TemplateID>
+    <ProjectType>General</ProjectType>
+    <RequiredFrameworkVersion>2.0</RequiredFrameworkVersion>
+    <NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
+    <DefaultName>CobraClass.cs</DefaultName>
+  </TemplateData>
+  <TemplateContent>
+		<References>
+			<Reference>
+				<Assembly>System</Assembly>
+			</Reference>
+		</References>
+
+    <ProjectItem ReplaceParameters="true">CobraClass.cs</ProjectItem>
+  </TemplateContent>
+</VSTemplate>

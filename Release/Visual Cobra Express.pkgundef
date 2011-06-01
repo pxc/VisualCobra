@@ -13,7 +13,7 @@
 [$RootKey$\NewProjectTemplates\TemplateDirs\{BEB01DDF-9D2B-435B-A9E7-76557E2B6B52}]
 
 // Leave the blank solution project
-// [$RootKey$\NewProjectTemplates\TemplateDirs\{DA9FB551-C724-11d0-AE1F-00A0C90FFFC3}]
+[$RootKey$\NewProjectTemplates\TemplateDirs\{DA9FB551-C724-11d0-AE1F-00A0C90FFFC3}]
 
 [$RootKey$\Projects\{059D6162-CD51-11D0-AE1F-00A0C90FFFC3}]
 
@@ -65,28 +65,28 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Visual Studio Code Snippets Package
-// [$RootKey$\Packages\{0B680757-2C29-4531-80FA-535A5178AA98}] 
+[$RootKey$\Packages\{0B680757-2C29-4531-80FA-535A5178AA98}] 
 
 // Start Page
-// [$RootKey$\Packages\{0E13FC54-9231-410b-8B74-95689CD32627}] 
+[$RootKey$\Packages\{0E13FC54-9231-410b-8B74-95689CD32627}] 
 
 // XML Schema Designer
-// [$RootKey$\Packages\{20aaf8fa-14c0-4897-8ca0-4d861e2b1212}] 
+[$RootKey$\Packages\{20aaf8fa-14c0-4897-8ca0-4d861e2b1212}] 
 
 // Class Outline Package
-// [$RootKey$\Packages\{21af45b0-ffa5-11d0-b63f-00a0c922e851}] 
+[$RootKey$\Packages\{21af45b0-ffa5-11d0-b63f-00a0c922e851}] 
 
 // Toolbox Control Installer Package
-// [$RootKey$\Packages\{2c298b35-07da-45f1-96a3-be55d91c8d7a}] 
+[$RootKey$\Packages\{2c298b35-07da-45f1-96a3-be55d91c8d7a}] 
 
 // ToolBox Control Installer Package
-// [$RootKey$\Packages\{36839529-3AF3-47fa-8194-F4A3FA9F0ED7}] 
+[$RootKey$\Packages\{36839529-3AF3-47fa-8194-F4A3FA9F0ED7}] 
 
 // Visual Studio Help Package
-// [$RootKey$\Packages\{4A791146-19E4-11D3-B86B-00C04F79F802}] 
+[$RootKey$\Packages\{4A791146-19E4-11D3-B86B-00C04F79F802}] 
 
 // Visual Studio Task List Package
-// [$RootKey$\Packages\{4A9B7E50-AA16-11d0-A8C5-00A0C921A4D2}] 
+[$RootKey$\Packages\{4A9B7E50-AA16-11d0-A8C5-00A0C921A4D2}] 
 
 // Visual Studio Directory Listing Package
 // [$RootKey$\Packages\{5010C52F-44AB-4051-8CE1-D36C20D989B4}] 
@@ -95,7 +95,7 @@
 // [$RootKey$\Packages\{588205e0-66e0-11d3-8600-00c04f6123b3}] 
 
 // Visual Studio Binary Editor Package
-// [$RootKey$\Packages\{5B98C2C0-CD7B-11D0-92DF-00A0C9138C45}] 
+[$RootKey$\Packages\{5B98C2C0-CD7B-11D0-92DF-00A0C9138C45}] 
 
 // Visual Studio Quick Search Package
 // [$RootKey$\Packages\{5CB51D20-CA1E-4b7e-94D9-CC3E77198E7A}] 
@@ -104,32 +104,32 @@
 // [$RootKey$\Packages\{67909B06-91E9-4F3E-AB50-495046BE9A9A}] 
 
 // Visual C++ Resource Editor Package
-// [$RootKey$\Packages\{74AAD8B2-3294-49CB-BB5D-E9BAB132BFD5}] 
+[$RootKey$\Packages\{74AAD8B2-3294-49CB-BB5D-E9BAB132BFD5}] 
 
 // ElementHost Designer Package
-// [$RootKey$\Packages\{7eab3c71-59ff-4571-a5f3-643f255fc2e6}] 
+[$RootKey$\Packages\{7eab3c71-59ff-4571-a5f3-643f255fc2e6}] 
 
 // Visual Studio XML Editor Package
-// [$RootKey$\Packages\{87569308-4813-40a0-9cd0-d7a30838ca3f}] 
+[$RootKey$\Packages\{87569308-4813-40a0-9cd0-d7a30838ca3f}] 
 
 // Visual Studio Explorers and Designers Package
 // This package is responsible for server explorer and "Tools->Connect to Server" and "Tools->Connect to Database" commands.
-// [$RootKey$\Packages\{8D8529D3-625D-4496-8354-3DAD630ECC1B}] 
+[$RootKey$\Packages\{8D8529D3-625D-4496-8354-3DAD630ECC1B}] 
 
 // MRU Data Source
-// [$RootKey$\Packages\{8ff5c2a8-5eba-4717-8ee1-46b6427d8ff3}] 
+[$RootKey$\Packages\{8ff5c2a8-5eba-4717-8ee1-46b6427d8ff3}] 
 
 // Visual Studio Web Browser Package
-// [$RootKey$\Packages\{e8b06f41-6d01-11d2-aa7d-00c04f990343}] 
+[$RootKey$\Packages\{e8b06f41-6d01-11d2-aa7d-00c04f990343}] 
 
 // Export Template Package
-// [$RootKey$\Packages\{f1e4cfca-4573-4345-8718-7bde2b1f0be8}] 
+[$RootKey$\Packages\{f1e4cfca-4573-4345-8718-7bde2b1f0be8}] 
 
 // Text Management Package
 // [$RootKey$\Packages\{F5E7E720-1401-11d1-883B-0000F87579D2}] 
 
 // Microsoft.VsWizards.ImportProjectFolderWizard.NewProjectFromExistingPackage
-// [$RootKey$\Packages\{afa50ba6-e144-43c7-8cc2-2244793ef4e9}] 
+[$RootKey$\Packages\{afa50ba6-e144-43c7-8cc2-2244793ef4e9}] 
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -137,48 +137,48 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Visual Studio Debugger Managed Package
-// [$RootKey$\Packages\{BEB01DDF-9D2B-435B-A9E7-76557E2B6B52}] 
+[$RootKey$\Packages\{BEB01DDF-9D2B-435B-A9E7-76557E2B6B52}] 
 
 // Visual Studio Debugger
-// [$RootKey$\Packages\{C9DD4A57-47FB-11D2-83E7-00C04F9902C1}] 
+[$RootKey$\Packages\{C9DD4A57-47FB-11D2-83E7-00C04F9902C1}] 
 
 // Microsoft.VisualStudio.Debugger.PdtDebug
-// [$RootKey$\Packages\{D277DC8A-AA1E-4303-8C03-1C58DB18E98B}] 
+[$RootKey$\Packages\{D277DC8A-AA1E-4303-8C03-1C58DB18E98B}] 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Data Related Packages
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Visual Database Tools Package
-// [$RootKey$\Packages\{220A4C17-7E7C-4663-BBCC-5E607C6543CD}] 
+[$RootKey$\Packages\{220A4C17-7E7C-4663-BBCC-5E607C6543CD}] 
 
 // Visual Studio Data Designer Extensibility Package
-// [$RootKey$\Packages\{A8F602E2-40CE-4daf-AE82-A457A91728B9}] 
+[$RootKey$\Packages\{A8F602E2-40CE-4daf-AE82-A457A91728B9}] 
 
 // Microsoft.VisualStudio.Data.Providers.SqlEverywhere.VsPackage
-// [$RootKey$\Packages\{b65e9356-a4c7-4855-96bb-1d3ec8514e8f}] 
+[$RootKey$\Packages\{b65e9356-a4c7-4855-96bb-1d3ec8514e8f}] 
 
 // Visual Studio Data Designers
-// [$RootKey$\Packages\{d6c919aa-1217-41e2-a13b-9b92e1866305}] 
+[$RootKey$\Packages\{d6c919aa-1217-41e2-a13b-9b92e1866305}] 
 
 // Visual Studio Data Package
-// [$RootKey$\Packages\{E1AA7737-69BE-43d0-A425-E3097651E192}] 
+[$RootKey$\Packages\{E1AA7737-69BE-43d0-A425-E3097651E192}] 
 
 // Visual Studio Database Tools Designers
-// [$RootKey$\Packages\{EF828E39-70F5-4b8e-A3A0-4C0ECD28A69A}] 
+[$RootKey$\Packages\{EF828E39-70F5-4b8e-A3A0-4C0ECD28A69A}] 
 
 // Microsoft Report Designer
-// [$RootKey$\Packages\{F3A96850-E2AE-4e00-9278-8FE23F225A0D}] 
+[$RootKey$\Packages\{F3A96850-E2AE-4e00-9278-8FE23F225A0D}] 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Web Specific Packages
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Visual Studio HTM Editor Package
-// [$RootKey$\Packages\{1B437D20-F8FE-11D2-A6AE-00104BCC7269}] 
+[$RootKey$\Packages\{1B437D20-F8FE-11D2-A6AE-00104BCC7269}] 
 
 // Microsoft.VisualStudio.Web.Application.WAPackage
-// [$RootKey$\Packages\{349C5850-65DF-11DA-9384-00065B846F21}] 
+[$RootKey$\Packages\{349C5850-65DF-11DA-9384-00065B846F21}] 
 
 // Visual Web Developer Project System Package
 [$RootKey$\Packages\{39c9c826-8ef8-4079-8c95-428f5b1c323f}] 
@@ -187,19 +187,19 @@
 "{39c9c826-8ef8-4079-8c95-428f5b1c323f}"=""
 
 // Visual Web Developer Project Persistance Package
-// [$RootKey$\Packages\{8FF02D1A-C177-4ac8-A62F-88FC6EA65F57}] 
+[$RootKey$\Packages\{8FF02D1A-C177-4ac8-A62F-88FC6EA65F57}] 
 
 // Visual Studio CSS Editing Package
-// [$RootKey$\Packages\{A764E895-518D-11d2-9A89-00C04F79EFC3}] 
+[$RootKey$\Packages\{A764E895-518D-11d2-9A89-00C04F79EFC3}] 
 
 // Visual Web Developer HTML Source Editor Package
-// [$RootKey$\Packages\{BFCC0C3C-6F87-4285-A6C8-BB616061800D}] 
+[$RootKey$\Packages\{BFCC0C3C-6F87-4285-A6C8-BB616061800D}] 
 
 // Visual Web Developer Web Application Upgrade Package
-// [$RootKey$\Packages\{DC7F691A-91FC-4F7b-923E-FE829C3A18DC}] 
+[$RootKey$\Packages\{DC7F691A-91FC-4F7b-923E-FE829C3A18DC}] 
 
 // Visual Web Developer Web Package
-// [$RootKey$\Packages\{e7f851c8-6267-4794-b0fe-7bcab6dacbb4}] 
+[$RootKey$\Packages\{e7f851c8-6267-4794-b0fe-7bcab6dacbb4}] 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Source Control Packages
@@ -219,13 +219,29 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Microsoft DSL Tools
-// [$RootKey$\Packages\{a9696de6-e209-414d-bbec-a0506fb0e924}] 
+[$RootKey$\Packages\{a9696de6-e209-414d-bbec-a0506fb0e924}] 
 
 // Microsoft.VisualStudio.Modeling.Integration.Shell.ModelBusPackage
-// [$RootKey$\Packages\{B7C8A95B-B8E4-4adb-9560-0F487D1429FB}] 
+[$RootKey$\Packages\{B7C8A95B-B8E4-4adb-9560-0F487D1429FB}] 
 
 // Microsoft.VisualStudio.DataDesign.SyncDesigner.DSL.SyncDesignerPackage
-// [$RootKey$\Packages\{c8afb2f4-bff7-4055-926d-d44afecd5832}] 
+[$RootKey$\Packages\{c8afb2f4-bff7-4055-926d-d44afecd5832}] 
 
 // Microsoft.VisualStudio.Modeling.Shell.CommonModelingPackage (Microsoft DSL Tools)
-// [$RootKey$\Packages\{d1091694-ea72-4bdd-8918-78324cc25448}] 
+[$RootKey$\Packages\{d1091694-ea72-4bdd-8918-78324cc25448}] 
+
+// MJS Remove specific items
+// Would like to turn off Toolbox and the Class View
+// --
+// See http://blogs.msdn.com/b/jameslau/archive/2008/07/11/how-do-i-pick-what-features-are-included-in-my-vs-shell-isolated-based-application.aspx
+// --
+// Class view
+//[$RootKey$\Packages\{C9C0AE26-AA77-11d2-B3F0-0000F87570EE}]
+//[$RootKey$\Packages\{DA9FB551-C724-11d0-AE1F-00A0C90FFFC3}] -- causes exception
+//
+//Note from http://msdn.microsoft.com/en-gb/library/dd891106.aspx
+//In many cases you will not be able to remove an entire feature. For example, there is no package
+//you can unregister to remove the Class View and its associated menus, options, and services. The
+//Class View window itself is provided by the Visual Studio Environment Package, which also provides
+//other key IDE features. In other words, if you wish to remove the Class View, you must also remove
+//the Find and Replace, the Environment Options pages, the Command Window, and the Output Window.

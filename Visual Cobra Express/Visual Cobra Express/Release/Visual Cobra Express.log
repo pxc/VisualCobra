@@ -1,12 +1,10 @@
-﻿Build started 30/12/2010 16:19:42.
-     1>Project "C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra Express\Visual Cobra Express.vcxproj" on node 2 (rebuild target(s)).
+﻿Build started 08/03/2011 21:17:08.
+     1>Project "C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra Express\Visual Cobra Express.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Release\Visual Cobra Express.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I\VisualStudioIntegration\Common\Source\CPP\VSL\Include /I\VisualStudioIntegration\common\inc /IRelease\ /Zi /nologo /W3 /WX /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _WINDOWS /D WIN32 /D NDEBUG /D _WINDOWS /D _UNICODE /D UNICODE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t- /Zc:forScope /Yc"StdAfx.h" /Fp"Release\Visual Cobra Express.pch" /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt stdafx.cpp
-         stdafx.cpp
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I\VisualStudioIntegration\Common\Source\CPP\VSL\Include /I\VisualStudioIntegration\common\inc /IRelease\ /Zi /nologo /W3 /WX /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _WINDOWS /D WIN32 /D NDEBUG /D _WINDOWS /D _UNICODE /D UNICODE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t- /Zc:forScope /Yu"StdAfx.h" /Fp"Release\Visual Cobra Express.pch" /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt "Visual Cobra Express.cpp"
-         Visual Cobra Express.cpp
+         All outputs are up-to-date.
+         All outputs are up-to-date.
        CreateMenuPkgDef:
        Skipping target "CreateMenuPkgDef" because it has no outputs.
        ResourceCompile:
@@ -29,14 +27,13 @@
          Copying file from "Splash.bmp" to "C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Release\\Splash.bmp".
          Copying file from "DebuggerProxy.dll" to "C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Release\\DebuggerProxy.dll".
          Copying file from "DebuggerProxy.dll.manifest" to "C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Release\\DebuggerProxy.dll.manifest".
-         Creating directory "C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Release\Profiles".
          Copying file from "General.vssettings" to "C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Release\\Profiles\General.vssettings".
          Copying file from "Visual Cobra Express.Application.pkgdef" to "C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Release\\Extensions\Application\Visual Cobra Express.Application.pkgdef".
        FinalizeBuildStatus:
          Deleting file "Release\Visual Cobra Express.unsuccessfulbuild".
          Touching "Release\Visual Cobra Express.lastbuildstate".
-     1>Done Building Project "C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra Express\Visual Cobra Express.vcxproj" (rebuild target(s)).
+     1>Done Building Project "C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra Express\Visual Cobra Express.vcxproj" (build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:08.18
+Time Elapsed 00:00:24.43

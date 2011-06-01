@@ -1,0 +1,30 @@
+class SmallSample
+
+	var _random = Random() 
+
+	def randomString(length as int, alphabet as String) as String
+
+		require
+			length > 0
+			alphabet <> ''
+
+		ensure
+			result.length == length
+
+		test
+			utils = SmallSample()
+			assert utils.randomString(5, 'ab').length == 5
+			s = utils.randomString(1000, 'a')
+			for c in s, assert c == 'a'
+
+		body
+			sb = StringBuilder()
+			for i in length
+				c = alphabet[_random.next(alphabet.length)]
+				sb.append(c)
+
+			return sb.toString
+
+	def main
+		alphabet = 'abcdefghijklmnopqrstuvwxyz'
+		for i in 10, print .randomString(10, alphabet)

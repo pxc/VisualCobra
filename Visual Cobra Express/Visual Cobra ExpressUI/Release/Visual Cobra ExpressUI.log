@@ -1,10 +1,9 @@
-﻿Build started 30/12/2010 16:19:26.
-     1>Project "C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra ExpressUI\Visual Cobra ExpressUI.vcxproj" on node 2 (rebuild target(s)).
-     1>PrepareForBuild:
-         Creating directory "C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Release\1033\".
-       InitializeBuildStatus:
+﻿Build started 08/03/2011 21:17:16.
+     1>Project "C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra ExpressUI\Visual Cobra ExpressUI.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
          Creating "Release\Visual Cobra ExpressUI.unsuccessfulbuild" because "AlwaysCreate" was specified.
        VSCTCompile:
+         Target out of date: C:\USERS\MATTHEW\DOCUMENTS\MY DROPBOX\CODE\COBRA\VISUALCOBRA\VISUALCOBRA\VISUAL COBRA EXPRESS\VISUAL COBRA EXPRESSUI\APPLICATIONCOMMANDS.VSCT is more recent, rebuiding...
          
          VSCT: errors   = 0
          VSCT: warnings = 0
@@ -19,8 +18,8 @@
        FinalizeBuildStatus:
          Deleting file "Release\Visual Cobra ExpressUI.unsuccessfulbuild".
          Touching "Release\Visual Cobra ExpressUI.lastbuildstate".
-     1>Done Building Project "C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra ExpressUI\Visual Cobra ExpressUI.vcxproj" (rebuild target(s)).
+     1>Done Building Project "C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra ExpressUI\Visual Cobra ExpressUI.vcxproj" (build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:13.58
+Time Elapsed 00:00:16.75

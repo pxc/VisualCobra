@@ -107,18 +107,19 @@ namespace VisualCobra.Classification
         {
             DisplayName = "CobraIndentErrorFormat";
 
-            var myUnderline = new TextDecoration();
+            var cobraIndentErrorColor = Colors.Orange;
+            const double cobraIndentErrorPenWidth = 1.0;
 
-            var orangePen = new Pen(new SolidColorBrush(Colors.Orange), 1.0) {DashStyle = DashStyles.Dot};
+            var cobraIndentErrorUnderline = new TextDecoration();
+            var orangePen = new Pen(new SolidColorBrush(cobraIndentErrorColor), cobraIndentErrorPenWidth) { DashStyle = DashStyles.Dot };
 
-            myUnderline.Pen = orangePen;
-            myUnderline.PenThicknessUnit = TextDecorationUnit.FontRecommended;
+            cobraIndentErrorUnderline.Pen = orangePen;
+            cobraIndentErrorUnderline.PenThicknessUnit = TextDecorationUnit.FontRecommended;
 
-            var myCollection = new TextDecorationCollection {myUnderline};
+            var myCollection = new TextDecorationCollection { cobraIndentErrorUnderline };
 
             TextDecorations = myCollection;
         }
     }
-
     #endregion //Format definition
 }

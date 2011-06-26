@@ -56,7 +56,7 @@ namespace VisualCobra.Visual_Cobra_Menu
         /// </summary>
         protected override void Initialize()
         {
-            Trace.WriteLine (string.Format(CultureInfo.CurrentCulture, "Entering Initialize() of: {0}", ToString()));
+            Trace.WriteLine(string.Format(CultureInfo.CurrentCulture, "Entering Initialize() of: {0}", ToString()));
             base.Initialize();
 
             // Add our command handlers for menu (commands must exist in the .vsct file)
@@ -108,12 +108,10 @@ namespace VisualCobra.Visual_Cobra_Menu
             var dte = (EnvDTE.DTE)GetService(typeof(EnvDTE.DTE));
             if (dte != null)
             {
-                //dte.ExecuteCommand("Tools.Options");
                 dte.ExecuteCommand("Tools.Options", "09ED5841-E5A2-475B-B869-42071B78320A");
             }
             else
             {
-                // dte is null
                 SimpleCobraMessageBox("Could not get DTE");
             }
         }
@@ -131,28 +129,27 @@ namespace VisualCobra.Visual_Cobra_Menu
                 if (options != null)
                 {
                     var rawCommandLine = options.CobraCommandLine;
-                    var fullCommandLine = rawCommandLine.Replace("<filename>", '"' + dte.ActiveDocument.Name + '"');
+                    var fullCommandLine = rawCommandLine.Replace("<filename>", String.Format("\"{0}\"", dte.ActiveDocument.Name));
 
-                    var cobraProcess = new Process
-                                           {
-                                               StartInfo =
-                                                   {
-                                                       FileName = "cmd",
-                                                       Arguments = "/k " + fullCommandLine,
-                                                       CreateNoWindow = false,
-                                                       WorkingDirectory = dte.ActiveDocument.Path
-                                                   }
-                                           };
-
-                    // switch to the source folder to run
-
-                    try
+                    using (var cobraProcess = new Process
+                                                  {
+                                                      StartInfo =
+                                                          {
+                                                              FileName = "cmd",
+                                                              Arguments = String.Format("/k {0}", fullCommandLine),
+                                                              CreateNoWindow = false,
+                                                              WorkingDirectory = dte.ActiveDocument.Path
+                                                          }
+                                                  })
                     {
-                        cobraProcess.Start();
-                    }
-                    catch (Exception ex)
-                    {
-                        SimpleCobraMessageBox("Error running Cobra: " + ex.Message);
+                        try
+                        {
+                            cobraProcess.Start();
+                        }
+                        catch (Exception ex)
+                        {
+                            SimpleCobraMessageBox(String.Format("Error running Cobra: {0}", ex.Message));
+                        }
                     }
                 }
             }

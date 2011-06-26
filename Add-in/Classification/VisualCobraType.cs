@@ -7,7 +7,7 @@ using System.ComponentModel.Composition;
 
 namespace VisualCobra.Classification
 {
-    internal static class VisualCobraClassificationDefinition
+    internal static class VisualCobraType
     {
         /// <summary>
         /// Defines the "CobraKeyword" classification type.

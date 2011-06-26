@@ -72,6 +72,5 @@ namespace Visual_Cobra_Express.AboutBoxPackage
             var aboutBox = new AboutBox();
             aboutBox.ShowModal();
         }
-
     }
 }

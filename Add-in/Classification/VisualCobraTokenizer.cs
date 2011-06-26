@@ -12,31 +12,29 @@ namespace VisualCobra.Classification
         public override IToken OnINDENT_MIXED_TS(IToken tok)
         {
             // Do everything the base class does except throwing an exception
-            IToken result = null;
             try
             {
-                result = base.OnINDENT_MIXED_TS(tok);
+                return base.OnINDENT_MIXED_TS(tok);
             }
-            catch (TokenizerError)
+            catch (TokenizerError e)
             {
-                // Do nothing
+                Trace.WriteLine(String.Format("Tokenizer error in OnINDENT_MIXED_TS: {0}", e.Message));
             }
-            return result;
+            return null;
         }
 
         public override IToken OnINDENT_ALL_SPACES(IToken tok)
         {
             // Do everything the base class does except throwing an exception
-            IToken result = null;
             try
             {
-                result = base.OnINDENT_ALL_SPACES(tok);
+                return base.OnINDENT_ALL_SPACES(tok);
             }
-            catch (TokenizerError)
+            catch (TokenizerError e)
             {
-                // Do nothing
+                Trace.WriteLine(String.Format("Tokenizer error in OnINDENT_ALL_SPACES: {0}", e.Message));
             }
-            return result;
+            return null;
         }
 
         public override List<IToken> AllTokens()

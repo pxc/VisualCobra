@@ -23,15 +23,20 @@ namespace VisualCobra
     /// </summary>
     class VisualCobra : IClassifier
     {
-        public const String MultiLineCommentDelimiter = "\"\"\""; // three quotes
+        /// <summary>
+        /// Three quotes, used to mark the beginning or end of a multi-line comment.
+        /// </summary>
+        public const String MultiLineCommentDelimiter = "\"\"\"";
 
         /// <summary>
         /// Cache multi-line comment spans for each snapshot so we don't have to
         /// calculate them each time.
-        /// NOTE: Because there is a separate classifier for each Cobra file in VS,
-        /// _commentCache will always have at most one entry. But it's a Dictionary
-        /// so we can more easily test that this assumption is true.
         /// </summary>
+        /// <remarks>
+        /// NOTE: Because there is a separate classifier for each Cobra file in VS,
+        /// <see cref="CommentCache"/> will always have at most one entry. But it's a
+        /// <see cref="Dictionary"/> so we can more easily test that this assumption is true.
+        /// </remarks>
         protected IDictionary<ITextSnapshot, IList<Span>> CommentCache;
 
         private static IClassificationType _cobraKeywordClassificationType;
@@ -40,9 +45,12 @@ namespace VisualCobra
         private static IClassificationType _cobraClassClassificationType;
         private static IClassificationType _cobraIndentErrorClassificationType;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="VisualCobra"/> class.
+        /// </summary>
+        /// <param name="registry">The registry.</param>
         internal VisualCobra(IClassificationTypeRegistryService registry)
         {
-            // initialise member data
             CommentCache = new Dictionary<ITextSnapshot, IList<Span>>();
 
             _cobraKeywordClassificationType = registry.GetClassificationType("CobraKeyword");
@@ -52,6 +60,13 @@ namespace VisualCobra
             _cobraIndentErrorClassificationType = registry.GetClassificationType("CobraIndentError");
         }
 
+        /// <summary>
+        /// Determines whether the specified token represents the name of a class.
+        /// </summary>
+        /// <param name="tok">The token.</param>
+        /// <returns>
+        ///   <c>true</c> if the specified token is the name of a class; otherwise, <c>false</c>.
+        /// </returns>
         protected static bool IsClass(IToken tok)
         {
             return tok != null && tok.Which == "ID" && tok.Text.Length > 0 && Char.IsUpper(tok.Text[0]);
@@ -120,8 +135,8 @@ namespace VisualCobra
         /// Searches the suppled SnapShotSpan, classifying any indentation errors it contains
         /// (i.e. where the leading space is a mixture of tabs and spaces).
         /// </summary>
-        /// <param name="span">The SnapshotSpan currently being classified</param>
-        /// <returns>A list of error spans</returns>
+        /// <param name="span">The span currently being classified.</param>
+        /// <returns>A list of error spans.</returns>
         public static IList<ClassificationSpan> GetIndentErrorSpans(SnapshotSpan span)
         {
             var text = span.GetText();
@@ -130,6 +145,15 @@ namespace VisualCobra
                     select new ClassificationSpan(new SnapshotSpan(span.Snapshot, span.Start + m.Index + m.Length - 1, 1), _cobraIndentErrorClassificationType)).ToList();
         }
 
+        /// <summary>
+        /// Creates a <see cref="ClassificationSpan"/> from the supplied span and token, and
+        /// adds it to the supplied classifications.
+        /// </summary>
+        /// <param name="span">The snapshop span.</param>
+        /// <param name="classifications">The classifications.</param>
+        /// <param name="tok">The token.</param>
+        /// <param name="tokenLength">Length of the token.</param>
+        /// <param name="classificationType">Type of the classification.</param>
         private static void AddSpanToClassifications(SnapshotSpan span, List<ClassificationSpan> classifications, IToken tok, int tokenLength, IClassificationType classificationType)
         {
             var tokenSpan = new SnapshotSpan(span.Snapshot, new Span(span.Start.Position + tok.CharNum - 1, tokenLength));
@@ -137,6 +161,13 @@ namespace VisualCobra
             classifications.Add(cs);
         }
 
+        /// <summary>
+        /// Gets the classifications from <see cref="VisualCobraTokenizer"/>.
+        /// </summary>
+        /// <param name="span">The span to get classifications from.</param>
+        /// <param name="tokCobra">The tokenizer to use.</param>
+        /// <returns>A list of <see cref="ClassificationSpan"/> objects representing the classifications
+        /// in <paramref name="span"/>.</returns>
         private static List<ClassificationSpan> GetClassificationsFromCobraTokenizer(SnapshotSpan span, VisualCobraTokenizer tokCobra)
         {
             // Tried parallelising, but I'm not sure it's safe in combination with "previous".
@@ -184,11 +215,12 @@ namespace VisualCobra
             }
             return classifications;
         }
+
         /// <summary>
         /// This method scans the given SnapshotSpan for potential matches for this classification.
         /// </summary>
-        /// <param name="span">The span currently being classified</param>
-        /// <returns>A list of ClassificationSpans that represent spans identified to be of this classification</returns>
+        /// <param name="span">The span currently being classified.</param>
+        /// <returns>A list of ClassificationSpans that represent spans identified to be of this classification.</returns>
         public IList<ClassificationSpan> GetClassificationSpans(SnapshotSpan span)
         {
             // TODO: this is an inefficient call to GetMultiLineComments each time!

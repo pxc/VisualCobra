@@ -21,7 +21,8 @@ namespace VisualCobra.Classification
     internal sealed class CobraKeywordFormat : ClassificationFormatDefinition
     {
         /// <summary>
-        /// Defines the visual format for the "CobraKeyword" classification type
+        /// Initializes a new instance of the <see cref="CobraKeywordFormat"/> class, which
+        /// defines the visual format for the <see cref="CobraKeyword"/> classification type.
         /// </summary>
         public CobraKeywordFormat()
         {
@@ -41,7 +42,8 @@ namespace VisualCobra.Classification
     internal sealed class CobraCommentFormat : ClassificationFormatDefinition
     {
         /// <summary>
-        /// Defines the visual format for the "CobraComment" classification type
+        /// Initializes a new instance of the <see cref="CobraCommentFormat"/> class,
+        /// which defines the visual format for the <see cref="CobraComment"/> classification type.
         /// </summary>
         public CobraCommentFormat()
         {
@@ -61,7 +63,8 @@ namespace VisualCobra.Classification
     internal sealed class CobraStringFormat : ClassificationFormatDefinition
     {
         /// <summary>
-        /// Defines the visual format for the "CobraString" classification type
+        /// Initializes a new instance of the <see cref="CobraStringFormat"/> class,
+        /// which defines the visual format for the <see cref="CobraString"/> classification type.
         /// </summary>
         public CobraStringFormat()
         {
@@ -81,7 +84,8 @@ namespace VisualCobra.Classification
     internal sealed class CobraClassFormat : ClassificationFormatDefinition
     {
         /// <summary>
-        /// Defines the visual format for the "CobraClass" classification type
+        /// Initializes a new instance of the <see cref="CobraClassFormat"/> class,
+        /// which defines the visual format for the <see cref="CobraClass"/> classification type.
         /// </summary>
         public CobraClassFormat()
         {
@@ -101,7 +105,8 @@ namespace VisualCobra.Classification
     internal sealed class CobraIndentErrorFormat : ClassificationFormatDefinition
     {
         /// <summary>
-        /// Defines the visual format for the "CobraIndentError" classification type
+        /// Initializes a new instance of the <see cref="CobraIndentErrorFormat"/> class,
+        /// which defines the visual format for the <see cref="CobraIndentError"/> classification type.
         /// </summary>
         public CobraIndentErrorFormat()
         {

@@ -18,12 +18,17 @@ namespace VisualCobra.Classification
     internal class VisualCobraProvider : IClassifierProvider
     {
         /// <summary>
-        /// Import the classification registry to be used for getting a reference
+        /// Imports the classification registry to be used for getting a reference
         /// to the custom classification type later.
         /// </summary>
         [Import]
         internal IClassificationTypeRegistryService ClassificationRegistry; // Set via MEF
 
+        /// <summary>
+        /// Gets the classifier using the <see cref="ClassificationRegistry"/>.
+        /// </summary>
+        /// <param name="buffer">The buffer to assign the classifier to as a property.</param>
+        /// <returns></returns>
         public IClassifier GetClassifier(ITextBuffer buffer)
         {
             Trace.WriteLine("In GetClassifier()");

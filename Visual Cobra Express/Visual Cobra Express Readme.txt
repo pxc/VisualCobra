@@ -4,7 +4,7 @@ Visual Cobra Express
 Setup instructions
 ------------------
 
-Visual Cobra Express is an integrated development environment (ICE) for the Cobra programming language. It is based on
+Visual Cobra Express is an integrated development environment (IDE) for the Cobra programming language. It is based on
 Microsoft Visual Studio's isloated shell and runs on Microsoft Windows.
 
 1. Install the Cobra programming language from cobra-language.com.
@@ -19,7 +19,7 @@ Microsoft Visual Studio's isloated shell and runs on Microsoft Windows.
 5. Double-click Visual Cobra Express.exe to run it.
    You should get a splash screen and then an integrated development environment.
 
-6. Drag in the sample .cobra file.
+6. Drag in the sample .cobra file (example.cobra).
    If the installation was successful, this should be displayed with coloured syntax highlighting.
 
 7. Select "Cobra | Run using Cobra" from the menu.

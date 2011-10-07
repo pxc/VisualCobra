@@ -16,8 +16,15 @@
 # Test files
 TestResults
 
-# Misc fluff
-[Tt]humbs.db
+# Debug and Release folders
+Debug
+Release
 
+# Misc files anywhere
+[Tt]humbs.db
+StyleCop.Cache
+
+# Misc files specific
 /_ReSharper.VisualCobra
 /ipch
+/Visual Cobra Express Beta for Chuck.xzipx

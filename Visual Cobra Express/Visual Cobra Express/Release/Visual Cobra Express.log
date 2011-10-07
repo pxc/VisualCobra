@@ -1,31 +1,18 @@
-﻿Build started 26/06/2011 02:14:25.
-     1>Project "C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra Express\Visual Cobra Express.vcxproj" on node 2 (rebuild target(s)).
-     1>_PrepareForClean:
-         Deleting file "Release\Visual Cobra Express.lastbuildstate".
-       CleanDeployedVsixExtensionFiles:
-         Deleting file "C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Release\\Visual Cobra Express.exe.config".
-         Deleting file "C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Release\\Visual Cobra Express.winprf".
-         Deleting file "C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Release\\Visual Cobra Express.pkgundef".
-         Deleting file "C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Release\\Visual Cobra Express.pkgdef".
-         Deleting file "C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Release\\ApplicationIcon.ico".
-         Deleting file "C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Release\\Splash.bmp".
-         Deleting file "C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Release\\DebuggerProxy.dll".
-         Deleting file "C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Release\\DebuggerProxy.dll.manifest".
-         Deleting file "C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Release\\Profiles\General.vssettings".
-         Deleting file "C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Release\\Extensions\Application\Visual Cobra Express.Application.pkgdef".
-       InitializeBuildStatus:
+﻿Build started 28/08/2011 16:44:52.
+     1>Project "C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra Express\Visual Cobra Express.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
          Creating "Release\Visual Cobra Express.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
-         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I\VisualStudioIntegration\Common\Source\CPP\VSL\Include /I\VisualStudioIntegration\common\inc /IRelease\ /Zi /nologo /W3 /WX /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _WINDOWS /D WIN32 /D NDEBUG /D _WINDOWS /D _UNICODE /D UNICODE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t- /Zc:forScope /Yc"StdAfx.h" /Fp"Release\Visual Cobra Express.pch" /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt stdafx.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I\VisualStudioIntegration\Common\Source\CPP\VSL\Include /I\VisualStudioIntegration\common\inc /IRelease\ /Zi /nologo /W3 /WX /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _WINDOWS /D WIN32 /D NDEBUG /D _WINDOWS /D _UNICODE /D UNICODE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t- /Zc:forScope /Yc"StdAfx.h" /Fp"Release\Visual Cobra Express.pch" /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt stdafx.cpp
          stdafx.cpp
-         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I\VisualStudioIntegration\Common\Source\CPP\VSL\Include /I\VisualStudioIntegration\common\inc /IRelease\ /Zi /nologo /W3 /WX /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _WINDOWS /D WIN32 /D NDEBUG /D _WINDOWS /D _UNICODE /D UNICODE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t- /Zc:forScope /Yu"StdAfx.h" /Fp"Release\Visual Cobra Express.pch" /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt "Visual Cobra Express.cpp"
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I\VisualStudioIntegration\Common\Source\CPP\VSL\Include /I\VisualStudioIntegration\common\inc /IRelease\ /Zi /nologo /W3 /WX /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _WINDOWS /D WIN32 /D NDEBUG /D _WINDOWS /D _UNICODE /D UNICODE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t- /Zc:forScope /Yu"StdAfx.h" /Fp"Release\Visual Cobra Express.pch" /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt "Visual Cobra Express.cpp"
          Visual Cobra Express.cpp
        CreateMenuPkgDef:
        Skipping target "CreateMenuPkgDef" because it has no outputs.
        ResourceCompile:
-         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /D _UNICODE /D UNICODE /l"0x0409" /I\VisualStudioIntegration\common\inc /IRelease\ /I"C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Release\\" /nologo /fo"Release\Visual Cobra Express.res" "Visual Cobra Express.rc" 
+         All outputs are up-to-date.
        Link:
-         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Release\Visual Cobra Express.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:\VisualStudioIntegration\common\lib\x86 /LIBPATH:Release\ shlwapi.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Release\Visual Cobra Express.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Release\Visual Cobra Express.pdb" /SUBSYSTEM:WINDOWS /LARGEADDRESSAWARE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Release\Visual Cobra Express.lib" /MACHINE:X86 "Release\Visual Cobra Express.res"
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Release\Visual Cobra Express.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:\VisualStudioIntegration\common\lib\x86 /LIBPATH:Release\ shlwapi.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Release\Visual Cobra Express.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Release\Visual Cobra Express.pdb" /SUBSYSTEM:WINDOWS /LARGEADDRESSAWARE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Release\Visual Cobra Express.lib" /MACHINE:X86 "Release\Visual Cobra Express.res"
          Release\stdafx.obj
          "Release\Visual Cobra Express.obj"
          Generating code
@@ -47,8 +34,8 @@
        FinalizeBuildStatus:
          Deleting file "Release\Visual Cobra Express.unsuccessfulbuild".
          Touching "Release\Visual Cobra Express.lastbuildstate".
-     1>Done Building Project "C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra Express\Visual Cobra Express.vcxproj" (rebuild target(s)).
+     1>Done Building Project "C:\Users\matthew\Documents\My Dropbox\Code\cobra\visualcobra\VisualCobra\Visual Cobra Express\Visual Cobra Express\Visual Cobra Express.vcxproj" (build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:23.30
+Time Elapsed 00:00:11.08

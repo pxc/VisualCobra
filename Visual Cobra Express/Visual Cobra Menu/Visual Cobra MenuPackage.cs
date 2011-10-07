@@ -118,7 +118,7 @@ namespace VisualCobra.Visual_Cobra_Menu
 
         private void DoCobraRun(object sender, EventArgs e)
         {
-            // TODO: Save all open files?
+            // TODO Save all open files?
 
             // Development tools extensibility (DTE)
             var dte = (EnvDTE.DTE)GetService(typeof(EnvDTE.DTE));

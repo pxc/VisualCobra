@@ -1,18 +1,17 @@
 ﻿// Copyright (c) 2010-2011 Matthew Strawbridge
 // See accompanying licence.txt for licence details
 
-using System.Linq;
-using Microsoft.VisualStudio.Text;
-using Microsoft.VisualStudio.Text.Classification;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Text.RegularExpressions;
+using Microsoft.VisualStudio.Text;
+using Microsoft.VisualStudio.Text.Classification;
 using VisualCobra.Classification;
 
-// TODO: Backticks in multi-line comments cause the line to appear black instead of green.
-// TODO: If the three """ appear in a string, the string takes precedence. E.g. r'[ \t]*"""[ \t]*\n' is a string not a comment.
-
+// TODO Backticks in multi-line comments cause the line to appear black instead of green.
+// TODO If the three """ appear in a string, the string takes precedence. E.g. r'[ \t]*"""[ \t]*\n' is a string not a comment.
 namespace VisualCobra
 {
     #region Classifier
@@ -223,7 +222,7 @@ namespace VisualCobra
         /// <returns>A list of ClassificationSpans that represent spans identified to be of this classification.</returns>
         public IList<ClassificationSpan> GetClassificationSpans(SnapshotSpan span)
         {
-            // TODO: this is an inefficient call to GetMultiLineComments each time!
+            // TODO this is an inefficient call to GetMultiLineComments each time!
             var multiLineComments = GetMultiLineComments(span);
 
             var compiler = new Compiler();
@@ -265,7 +264,7 @@ namespace VisualCobra
             }
 
             // Add all comment spans
-            // TODO: Many of these will be out of bounds, so they should perhaps be trimmed down first
+            // TODO Many of these will be out of bounds, so they should perhaps be trimmed down first
             classifications.AddRange(multiLineComments.Select(comment => new ClassificationSpan(new SnapshotSpan(span.Snapshot, comment), _cobraCommentClassificationType)));
 
             return classifications;

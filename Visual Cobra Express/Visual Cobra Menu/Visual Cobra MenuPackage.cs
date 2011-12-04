@@ -1,22 +1,28 @@
-﻿using System;
-using System.Diagnostics;
-using System.Globalization;
-using System.Runtime.InteropServices;
-using System.ComponentModel.Design;
-using Microsoft.VisualStudio.Shell.Interop;
-using Microsoft.VisualStudio.Shell;
+﻿// Copyright (c) 2010-2011 Matthew Strawbridge
+// See accompanying licence.txt for licence details
 
 namespace VisualCobra.Visual_Cobra_Menu
 {
+    using System;
+    using System.ComponentModel.Design;
+    using System.Diagnostics;
+    using System.Globalization;
+    using System.Runtime.InteropServices;
+    using Microsoft.VisualStudio.Shell;
+    using Microsoft.VisualStudio.Shell.Interop;
+
     /// <summary>
+    /// <para>
     /// This is the class that implements the package exposed by this assembly.
-    ///
+    /// </para>
+    /// <para>
     /// The minimum requirement for a class to be considered a valid package for Visual Studio
     /// is to implement the IVsPackage interface and register itself with the shell.
     /// This package uses the helper classes defined inside the Managed Package Framework (MPF)
     /// to do it: it derives from the Package class that provides the implementation of the 
     /// IVsPackage interface and uses the registration attributes defined in the framework to 
     /// register itself and its components with the shell.
+    /// </para>
     /// </summary>
     // This attribute tells the PkgDef creation utility (CreatePkgDef.exe) that this class is
     // a package.
@@ -33,18 +39,12 @@ namespace VisualCobra.Visual_Cobra_Menu
     public sealed class VisualCobraMenuPackage : Package
     {
         /// <summary>
-        /// Default constructor of the package.
-        /// Inside this method you can place any initialization code that does not require 
-        /// any Visual Studio service because at this point the package object is created but 
-        /// not sited yet inside Visual Studio environment. The place to do all the other 
-        /// initialization is the Initialize method.
+        /// Initializes a new instance of the <see cref="VisualCobraMenuPackage"/> class.
         /// </summary>
         public VisualCobraMenuPackage()
         {
             Trace.WriteLine(string.Format(CultureInfo.CurrentCulture, "Entering constructor for: {0}", ToString()));
         }
-
-
 
         /////////////////////////////////////////////////////////////////////////////
         // Overriden Package Implementation
@@ -61,7 +61,11 @@ namespace VisualCobra.Visual_Cobra_Menu
 
             // Add our command handlers for menu (commands must exist in the .vsct file)
             var mcs = GetService(typeof(IMenuCommandService)) as OleMenuCommandService;
-            if (null == mcs) return;
+            if (null == mcs)
+            {
+                return;
+            }
+
             // Create the command for Cobra settings
             var menuCobraSettingsCommandID = new CommandID(GuidList.GuidVisualCobraMenuCmdSet, (int)PkgCmdIDList.CmdIDCobraSettings);
             var menuItemCobraSettings = new MenuCommand(DoCobraSettings, menuCobraSettingsCommandID);
@@ -79,6 +83,8 @@ namespace VisualCobra.Visual_Cobra_Menu
         /// See the Initialize method to see how the menu item is associated to this function using
         /// the OleMenuCommandService service and the MenuCommand class.
         /// </summary>
+        /// <param name="sender">The object calling back to the menu.</param>
+        /// <param name="e">The event.</param>
 // ReSharper disable UnusedMember.Local
 // ReSharper disable UnusedParameter.Local
         private void MenuItemCallback(object sender, EventArgs e)
@@ -103,6 +109,11 @@ namespace VisualCobra.Visual_Cobra_Menu
                        out result));
         }
 
+        /// <summary>
+        /// Displays the Cobra Settings dialog page.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void DoCobraSettings(object sender, EventArgs e)
         {
             var dte = (EnvDTE.DTE)GetService(typeof(EnvDTE.DTE));
@@ -116,6 +127,11 @@ namespace VisualCobra.Visual_Cobra_Menu
             }
         }
 
+        /// <summary>
+        /// Displays the Cobra run dialog and does the run.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void DoCobraRun(object sender, EventArgs e)
         {
             // TODO Save all open files?
@@ -160,23 +176,27 @@ namespace VisualCobra.Visual_Cobra_Menu
             }
         }
 
-        private void SimpleCobraMessageBox(String msg)
+        /// <summary>
+        /// Displays a simple message box.
+        /// </summary>
+        /// <param name="message">The message to display.</param>
+        private void SimpleCobraMessageBox(string message)
         {
             var uiShell = (IVsUIShell)GetService(typeof(SVsUIShell));
             var clsid = Guid.Empty;
             int result;
-            uiShell.ShowMessageBox(0,
-                                   ref clsid,
-                                   "Cobra",
-                                   msg,
-                                   string.Empty,
-                                   0,
-                                   OLEMSGBUTTON.OLEMSGBUTTON_OK,
-                                   OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST,
-                                   OLEMSGICON.OLEMSGICON_INFO,
-                                   0,        // false
-                                   out result);
-        }
-    
+            uiShell.ShowMessageBox(
+                0,
+                ref clsid,
+                "Cobra",
+                message,
+                string.Empty,
+                0,
+                OLEMSGBUTTON.OLEMSGBUTTON_OK,
+                OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST,
+                OLEMSGICON.OLEMSGICON_INFO,
+                0,        // false
+                out result);
+        }    
     }
 }

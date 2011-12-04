@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Copyright (c) 2010-2011 Matthew Strawbridge
+// See accompanying licence.txt for licence details
+
+using System;
 using System.Reflection;
 using System.Resources;
 using System.Runtime.InteropServices;

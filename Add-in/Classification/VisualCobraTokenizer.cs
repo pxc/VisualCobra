@@ -1,17 +1,17 @@
 ﻿// Copyright (c) 2010-2011 Matthew Strawbridge
 // See accompanying licence.txt for licence details
 
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-
 namespace VisualCobra.Classification
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+
     /// <summary>
     /// A tokenizer built on top of <see cref="CobraTokenizer"/>, but less interested
     /// in errors.
     /// </summary>
-    class VisualCobraTokenizer:CobraTokenizer
+    public class VisualCobraTokenizer : CobraTokenizer
     {
         /// <summary>
         /// Called when an indentation consisting of a mixture of tabs and spaces is encountered.
@@ -32,6 +32,7 @@ namespace VisualCobra.Classification
             {
                 Trace.WriteLine(String.Format("Tokenizer error in OnINDENT_MIXED_TS: {0}", e.Message));
             }
+
             return null;
         }
 
@@ -54,6 +55,7 @@ namespace VisualCobra.Classification
             {
                 Trace.WriteLine(String.Format("Tokenizer error in OnINDENT_ALL_SPACES: {0}", e.Message));
             }
+
             return null;
         }
 
@@ -76,6 +78,7 @@ namespace VisualCobra.Classification
                 // just log it and carry on
                 Trace.WriteLine(exc);
             }
+
             return tokens;
         }
     }

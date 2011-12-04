@@ -1,14 +1,14 @@
 ﻿// Copyright (c) 2010-2011 Matthew Strawbridge
 // See accompanying licence.txt for licence details
 
-using Microsoft.VisualStudio.Text.Classification;
-using Microsoft.VisualStudio.Utilities;
-using System.ComponentModel.Composition;
-using System.Windows;
-using System.Windows.Media;
-
 namespace VisualCobra.Classification
 {
+    using System.ComponentModel.Composition;
+    using System.Windows;
+    using System.Windows.Media;
+    using Microsoft.VisualStudio.Text.Classification;
+    using Microsoft.VisualStudio.Utilities;
+
     #region Format definition
     /// <summary>
     /// Keywords are blue.
@@ -16,8 +16,8 @@ namespace VisualCobra.Classification
     [Export(typeof(EditorFormatDefinition))]
     [ClassificationType(ClassificationTypeNames = "CobraKeyword")]
     [Name("CobraKeyword")]
-    [UserVisible(true)] //this should be visible to the end user
-    [Order(Before = Priority.Default)] //set the priority to be after the default classifiers
+    [UserVisible(true)] // this should be visible to the end user
+    [Order(Before = Priority.Default)] // set the priority to be after the default classifiers
     internal sealed class CobraKeywordFormat : ClassificationFormatDefinition
     {
         /// <summary>
@@ -37,8 +37,8 @@ namespace VisualCobra.Classification
     [Export(typeof(EditorFormatDefinition))]
     [ClassificationType(ClassificationTypeNames = "CobraComment")]
     [Name("CobraComment")]
-    [UserVisible(true)] //this should be visible to the end user
-    [Order(Before = Priority.Default)] //set the priority to be after the default classifiers
+    [UserVisible(true)] // this should be visible to the end user
+    [Order(Before = Priority.Default)] // set the priority to be after the default classifiers
     internal sealed class CobraCommentFormat : ClassificationFormatDefinition
     {
         /// <summary>
@@ -58,8 +58,8 @@ namespace VisualCobra.Classification
     [Export(typeof(EditorFormatDefinition))]
     [ClassificationType(ClassificationTypeNames = "CobraString")]
     [Name("CobraString")]
-    [UserVisible(true)] //this should be visible to the end user
-    [Order(Before = Priority.Default)] //set the priority to be after the default classifiers
+    [UserVisible(true)] // this should be visible to the end user
+    [Order(Before = Priority.Default)] // set the priority to be after the default classifiers
     internal sealed class CobraStringFormat : ClassificationFormatDefinition
     {
         /// <summary>
@@ -79,8 +79,8 @@ namespace VisualCobra.Classification
     [Export(typeof(EditorFormatDefinition))]
     [ClassificationType(ClassificationTypeNames = "CobraClass")]
     [Name("CobraClass")]
-    [UserVisible(true)] //this should be visible to the end user
-    [Order(Before = Priority.Default)] //set the priority to be after the default classifiers
+    [UserVisible(true)] // this should be visible to the end user
+    [Order(Before = Priority.Default)] // set the priority to be after the default classifiers
     internal sealed class CobraClassFormat : ClassificationFormatDefinition
     {
         /// <summary>
@@ -100,8 +100,8 @@ namespace VisualCobra.Classification
     [Export(typeof(EditorFormatDefinition))]
     [ClassificationType(ClassificationTypeNames = "CobraIndentError")]
     [Name("CobraIndentError")]
-    [UserVisible(true)] //this should be visible to the end user
-    [Order(Before = Priority.Default)] //set the priority to be after the default classifiers
+    [UserVisible(true)] // this should be visible to the end user
+    [Order(Before = Priority.Default)] // set the priority to be after the default classifiers
     internal sealed class CobraIndentErrorFormat : ClassificationFormatDefinition
     {
         /// <summary>
@@ -113,10 +113,10 @@ namespace VisualCobra.Classification
             DisplayName = "CobraIndentErrorFormat";
 
             var cobraIndentErrorColor = Colors.Orange;
-            const double cobraIndentErrorPenWidth = 1.0;
+            const double CobraIndentErrorPenWidth = 1.0;
 
             var cobraIndentErrorUnderline = new TextDecoration();
-            var orangePen = new Pen(new SolidColorBrush(cobraIndentErrorColor), cobraIndentErrorPenWidth) { DashStyle = DashStyles.Dot };
+            var orangePen = new Pen(new SolidColorBrush(cobraIndentErrorColor), CobraIndentErrorPenWidth) { DashStyle = DashStyles.Dot };
 
             cobraIndentErrorUnderline.Pen = orangePen;
             cobraIndentErrorUnderline.PenThicknessUnit = TextDecorationUnit.FontRecommended;

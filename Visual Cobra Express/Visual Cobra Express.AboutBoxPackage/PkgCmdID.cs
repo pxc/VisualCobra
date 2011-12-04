@@ -1,9 +1,13 @@
-﻿// PkgCmdID.cs
+﻿// Copyright (c) 2010-2011 Matthew Strawbridge
+// See accompanying licence.txt for licence details
+//
+// PkgCmdID.cs
 // MUST match PkgCmdID.h
+
 namespace Visual_Cobra_Express.AboutBoxPackage
 {
-    static class PkgCmdIDList
+    internal static class PkgCmdIDList
     {
         public const uint CmdIDHelpAbout = 0x100;
-    };
+    }
 }

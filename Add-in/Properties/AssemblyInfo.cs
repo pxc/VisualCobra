@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2010-2011 Matthew Strawbridge
+// Copyright (c) 2010-2011 Matthew Strawbridge
 using System.Reflection;
 using System.Runtime.InteropServices;
 

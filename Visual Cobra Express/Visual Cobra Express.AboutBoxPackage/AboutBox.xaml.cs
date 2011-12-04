@@ -1,40 +1,20 @@
-﻿using System.Diagnostics;
-using System.IO;
-using System.Reflection;
-using System.Windows.Data;
-using System.Xml;
+﻿// Copyright (c) 2010-2011 Matthew Strawbridge
+// See accompanying licence.txt for licence details
 
 namespace Visual_Cobra_Express.AboutBoxPackage
 {
+    using System.Diagnostics;
+    using System.IO;
+    using System.Reflection;
+    using System.Windows.Data;
+    using System.Xml;
+
     /// <summary>
     /// Interaction logic for AboutBox.xaml
     /// </summary>
     public partial class AboutBox
     {
-        /// <summary>
-        /// Default constructor.
-        /// </summary>
-        public AboutBox()
-        {
-            InitializeComponent();
-        }
-
-        /// <summary>
-        /// Handles click navigation on the hyperlink in the About dialog.
-        /// </summary>
-        /// <param name="sender">Object that sent the event.</param>
-        /// <param name="e">Navigation events arguments.</param>
-        private void HyperlinkRequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
-        {
-            if (e.Uri == null || string.IsNullOrEmpty(e.Uri.OriginalString)) return;
-            var uri = e.Uri.AbsoluteUri;
-            Process.Start(new ProcessStartInfo(uri));
-            e.Handled = true;
-        }
-
-        #region AboutData Provider
-        #region Member data
-        private XmlDocument _xmlDoc;
+        private XmlDocument mXmlDoc;
 
         private const string PropertyNameTitle = "Title";
         private const string PropertyNameDescription = "Description";
@@ -50,9 +30,15 @@ namespace Visual_Cobra_Express.AboutBoxPackage
         private const string XPathCompany = XPathRoot + PropertyNameCompany;
         private const string XPathLink = XPathRoot + "Link";
         private const string XPathLinkUri = XPathRoot + "Link/@Uri";
-        #endregion
 
-        #region Properties
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AboutBox"/> class.
+        /// </summary>
+        public AboutBox()
+        {
+            InitializeComponent();
+        }
+
         /// <summary>
         /// Gets the title property, which is display in the About dialogs window title.
         /// </summary>
@@ -61,11 +47,13 @@ namespace Visual_Cobra_Express.AboutBoxPackage
             get
             {
                 var result = CalculatePropertyValue<AssemblyTitleAttribute>(PropertyNameTitle, XPathTitle);
+
                 if (string.IsNullOrEmpty(result))
                 {
                     // otherwise, just get the name of the assembly itself.
                     result = Path.GetFileNameWithoutExtension(Assembly.GetExecutingAssembly().CodeBase);
                 }
+
                 return result;
             }
         }
@@ -130,9 +118,24 @@ namespace Visual_Cobra_Express.AboutBoxPackage
         {
             get { return GetLogicalResourceString(XPathLinkUri); }
         }
-        #endregion
 
-        #region Resource location methods
+        /// <summary>
+        /// Handles click navigation on the hyperlink in the About dialog.
+        /// </summary>
+        /// <param name="sender">Object that sent the event.</param>
+        /// <param name="e">Navigation events arguments.</param>
+        private void HyperlinkRequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
+        {
+            if (e.Uri == null || string.IsNullOrEmpty(e.Uri.OriginalString))
+            {
+                return;
+            }
+
+            var uri = e.Uri.AbsoluteUri;
+            Process.Start(new ProcessStartInfo(uri));
+            e.Handled = true;
+        }
+
         /// <summary>
         /// Gets the specified property value either from a specific attribute, or from a resource dictionary.
         /// </summary>
@@ -144,6 +147,7 @@ namespace Visual_Cobra_Express.AboutBoxPackage
         private string CalculatePropertyValue<T>(string propertyName, string xpathQuery)
         {
             var result = string.Empty;
+
             // first, try to get the property value from an attribute.
             var attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(T), false);
             if (attributes.Length > 0)
@@ -162,6 +166,7 @@ namespace Visual_Cobra_Express.AboutBoxPackage
                 // if that fails, try to get it from a resource.
                 result = GetLogicalResourceString(xpathQuery);
             }
+
             return result;
         }
 
@@ -172,17 +177,18 @@ namespace Visual_Cobra_Express.AboutBoxPackage
         {
             get
             {
-                if (_xmlDoc == null)
+                if (mXmlDoc == null)
                 {
                     // if we haven't already found the resource XmlDocument, then try to find it.
                     var provider = TryFindResource("aboutProvider") as XmlDataProvider;
                     if (provider != null)
                     {
                         // save away the XmlDocument, so we don't have to get it multiple times.
-                        _xmlDoc = provider.Document;
+                        mXmlDoc = provider.Document;
                     }
                 }
-                return _xmlDoc;
+
+                return mXmlDoc;
             }
         }
 
@@ -195,6 +201,7 @@ namespace Visual_Cobra_Express.AboutBoxPackage
         protected virtual string GetLogicalResourceString(string xpathQuery)
         {
             var result = string.Empty;
+
             // get the About xml information from the resources.
             var doc = ResourceXmlDocument;
             if (doc != null)
@@ -215,9 +222,8 @@ namespace Visual_Cobra_Express.AboutBoxPackage
                     }
                 }
             }
+
             return result;
         }
-        #endregion
-        #endregion
     }
 }

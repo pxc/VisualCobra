@@ -1,12 +1,15 @@
 ﻿// Copyright (c) 2010-2011 Matthew Strawbridge
 // See accompanying licence.txt for licence details
 
-using Microsoft.VisualStudio.Text.Classification;
-using Microsoft.VisualStudio.Utilities;
-using System.ComponentModel.Composition;
-
 namespace VisualCobra.Classification
 {
+    using System.ComponentModel.Composition;
+    using Microsoft.VisualStudio.Text.Classification;
+    using Microsoft.VisualStudio.Utilities;
+
+    /// <summary>
+    /// Token classification types.
+    /// </summary>
     internal static class VisualCobraType
     {
         /// <summary>

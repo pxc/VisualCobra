@@ -1,21 +1,23 @@
-﻿using System;
-using System.ComponentModel.Design;
-using System.Diagnostics;
-using System.Globalization;
-using System.Runtime.InteropServices;
-using Microsoft.VisualStudio.Shell;
+﻿// Copyright (c) 2010-2011 Matthew Strawbridge
+// See accompanying licence.txt for licence details
 
 namespace Visual_Cobra_Express.AboutBoxPackage
 {
+    using System;
+    using System.ComponentModel.Design;
+    using System.Diagnostics;
+    using System.Globalization;
+    using System.Runtime.InteropServices;
+    using Microsoft.VisualStudio.Shell;
+
     /// <summary>
-    /// This is the class that implements the package exposed by this assembly.
-    ///
-    /// The minimum requirement for a class to be considered a valid package for Visual Studio
+    /// <para>This is the class that implements the package exposed by this assembly.</para>
+    /// <para>The minimum requirement for a class to be considered a valid package for Visual Studio
     /// is to implement the IVsPackage interface and register itself with the shell.
     /// This package uses the helper classes defined inside the Managed Package Framework (MPF)
     /// to do it: it derives from the Package class that provides the implementation of the 
     /// IVsPackage interface and uses the registration attributes defined in the framework to 
-    /// register itself and its components with the shell.
+    /// register itself and its components with the shell.</para>
     /// </summary>
     // This attribute tells the PkgDef creation utility (CreatePkgDef.exe) that this class is
     // a package.
@@ -26,18 +28,18 @@ namespace Visual_Cobra_Express.AboutBoxPackage
     public sealed class AboutBoxPackage : Package
     {
         /// <summary>
-        /// Default constructor of the package.
+        /// <para>Initializes a new instance of the <see cref="AboutBoxPackage"/> class.</para>
+        /// <para>
         /// Inside this method you can place any initialization code that does not require 
         /// any Visual Studio service because at this point the package object is created but 
         /// not sited yet inside Visual Studio environment. The place to do all the other 
         /// initialization is the Initialize method.
+        /// </para>
         /// </summary>
         public AboutBoxPackage()
         {
             Trace.WriteLine(string.Format(CultureInfo.CurrentCulture, "Entering constructor for: {0}", ToString()));
         }
-
-
 
         /////////////////////////////////////////////////////////////////////////////
         // Overriden Package Implementation
@@ -54,7 +56,11 @@ namespace Visual_Cobra_Express.AboutBoxPackage
 
             // Add our command handlers for menu (commands must exist in the .vsct file)
             var mcs = GetService(typeof(IMenuCommandService)) as OleMenuCommandService;
-            if (null == mcs) return;
+            if (null == mcs)
+            {
+                return;
+            }
+
             // Create the command for the menu item.
             var menuCommandID = new CommandID(GuidList.GuidAboutBoxPackageCmdSet, (int)PkgCmdIDList.CmdIDHelpAbout);
             var menuItem = new MenuCommand(MenuItemCallback, menuCommandID);
@@ -67,6 +73,8 @@ namespace Visual_Cobra_Express.AboutBoxPackage
         /// See the Initialize method to see how the menu item is associated to this function using
         /// the OleMenuCommandService service and the MenuCommand class.
         /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private static void MenuItemCallback(object sender, EventArgs e)
         {
             var aboutBox = new AboutBox();

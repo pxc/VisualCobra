@@ -11,8 +11,11 @@ namespace VisualCobra.Classification
 
     #region Format definition
     /// <summary>
-    /// Keywords are blue.
+    /// Gets the classification format definition for Cobra keywords.
     /// </summary>
+    /// <value>
+    /// The classification format definition for Cobra keywords.
+    /// </value>
     [Export(typeof(EditorFormatDefinition))]
     [ClassificationType(ClassificationTypeNames = "CobraKeyword")]
     [Name("CobraKeyword")]
@@ -32,8 +35,11 @@ namespace VisualCobra.Classification
     }
 
     /// <summary>
-    /// Comments are green.
+    /// Gets the classification format definition for Cobra comments.
     /// </summary>
+    /// <value>
+    /// The classification format definition for Cobra comments.
+    /// </value>
     [Export(typeof(EditorFormatDefinition))]
     [ClassificationType(ClassificationTypeNames = "CobraComment")]
     [Name("CobraComment")]
@@ -53,8 +59,11 @@ namespace VisualCobra.Classification
     }
 
     /// <summary>
-    /// Strings are brown.
+    /// Gets the classification format definition for Cobra strings.
     /// </summary>
+    /// <value>
+    /// The classification format definition for Cobra strings.
+    /// </value>
     [Export(typeof(EditorFormatDefinition))]
     [ClassificationType(ClassificationTypeNames = "CobraString")]
     [Name("CobraString")]
@@ -74,8 +83,11 @@ namespace VisualCobra.Classification
     }
 
     /// <summary>
-    /// Classes are light blue.
+    /// Gets the classification format definition for Cobra classes.
     /// </summary>
+    /// <value>
+    /// The classification format definition for Cobra classes.
+    /// </value>
     [Export(typeof(EditorFormatDefinition))]
     [ClassificationType(ClassificationTypeNames = "CobraClass")]
     [Name("CobraClass")]
@@ -95,8 +107,11 @@ namespace VisualCobra.Classification
     }
 
     /// <summary>
-    /// Indent errors (mixture of leading tabs and spaces) are underlined in orange.
+    /// Gets the classification format definition for Cobra intent errors (mixture of leading tabs and spaces).
     /// </summary>
+    /// <value>
+    /// The classification format definition for Cobra indent errors.
+    /// </value>
     [Export(typeof(EditorFormatDefinition))]
     [ClassificationType(ClassificationTypeNames = "CobraIndentError")]
     [Name("CobraIndentError")]

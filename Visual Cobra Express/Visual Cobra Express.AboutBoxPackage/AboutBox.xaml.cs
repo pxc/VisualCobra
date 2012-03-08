@@ -10,10 +10,16 @@ namespace Visual_Cobra_Express.AboutBoxPackage
     using System.Xml;
 
     /// <summary>
-    /// Interaction logic for AboutBox.xaml
+    /// Gets the about box.
     /// </summary>
+    /// <value>
+    /// The about box.
+    /// </value>
     public partial class AboutBox
     {
+        /// <summary>
+        /// The xml document.
+        /// </summary>
         private XmlDocument mXmlDoc;
 
         private const string PropertyNameTitle = "Title";
@@ -40,8 +46,11 @@ namespace Visual_Cobra_Express.AboutBoxPackage
         }
 
         /// <summary>
-        /// Gets the title property, which is display in the About dialogs window title.
+        /// Gets the product title, which is displayed in the About dialog's window title.
         /// </summary>
+        /// <value>
+        /// The product title.
+        /// </value>
         public string ProductTitle
         {
             get
@@ -112,7 +121,7 @@ namespace Visual_Cobra_Express.AboutBoxPackage
         }
 
         /// <summary>
-        /// Gets the link uri that is the navigation target of the link.
+        /// Gets the link URI that is the navigation target of the link.
         /// </summary>
         public string LinkUri
         {

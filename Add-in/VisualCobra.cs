@@ -16,9 +16,9 @@ namespace VisualCobra
 
     #region Classifier
     /// <summary>
-    /// Classifier for Cobra.
-    /// Note that a new instance of this classifier is created for each Cobra file opened, so member variables only need to
-    /// worry about a single document.
+    /// <para>Classifier for Cobra.</para>
+    /// <para>Note that a new instance of this classifier is created for each Cobra file opened, so member variables only need to
+    /// worry about a single document.</para>
     /// </summary>
     public sealed class VisualCobra : IClassifier
     {
@@ -64,7 +64,7 @@ namespace VisualCobra
         private IDictionary<ITextSnapshot, IList<Span>> _commentCache;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="VisualCobra"/> class.
+        /// Initializes a new instance of the VisualCobra class.
         /// </summary>
         /// <param name="registry">The registry.</param>
         internal VisualCobra(IClassificationTypeRegistryService registry)

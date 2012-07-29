@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2010-2011 Matthew Strawbridge
+﻿// Copyright (c) 2010-2012 Matthew Strawbridge
 // See accompanying licence.txt for licence details
 
 namespace VisualCobra
@@ -22,7 +22,7 @@ namespace VisualCobra
             [Export]
             [Name("cobra")]
             [BaseDefinition("text")]
-            internal static ContentTypeDefinition CobraContentTypeDefinition;
+            internal static ContentTypeDefinition CobraContentTypeDefinition = null;
 
             /// <summary>
             /// Specifies that files with a .cobra extension are Cobra files.
@@ -30,7 +30,7 @@ namespace VisualCobra
             [Export]
             [FileExtension(".cobra")]
             [ContentType("cobra")]
-            internal static FileExtensionToContentTypeDefinition CobraFileExtensionDefinition;
+            internal static FileExtensionToContentTypeDefinition CobraFileExtensionDefinition = null;
         }
     }
 }

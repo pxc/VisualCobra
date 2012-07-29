@@ -1,7 +1,7 @@
 ﻿// Guids.cs
 // MUST match guids.h
 //
-// Copyright (c) 2010-2011 Matthew Strawbridge
+// Copyright (c) 2010-2012 Matthew Strawbridge
 // See accompanying licence.txt for licence details
 
 namespace Visual_Cobra_Express.AboutBoxPackage

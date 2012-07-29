@@ -1,9 +1,8 @@
-﻿// Copyright (c) 2010-2011 Matthew Strawbridge
+﻿// Copyright (c) 2010-2012 Matthew Strawbridge
 // See accompanying licence.txt for licence details
 
 namespace VisualCobra.Visual_Cobra_Menu
 {
-    using System;
     using System.Runtime.InteropServices;
     using Microsoft.VisualStudio.Shell;
 
@@ -21,7 +20,7 @@ namespace VisualCobra.Visual_Cobra_Menu
         /// Uses <c>-ert</c> (embed runtime) by default so you can run code in folders that don't
         /// contain the Cobra DLL.
         /// </remarks>
-        private string _cobraCommandLine = "cobra -ert <filename>";
+        private string _cobraCommandLine = Resources.Default_Cobra_command_line;
 
         /// <summary>
         /// Gets or sets the Cobra command line.
@@ -33,6 +32,6 @@ namespace VisualCobra.Visual_Cobra_Menu
         {
             get { return _cobraCommandLine; }
             set { _cobraCommandLine = value; }
-        }        
+        }
     }
 }

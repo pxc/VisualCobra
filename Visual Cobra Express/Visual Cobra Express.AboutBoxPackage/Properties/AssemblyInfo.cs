@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2010-2011 Matthew Strawbridge
+﻿// Copyright (c) 2010-2012 Matthew Strawbridge
 // See accompanying licence.txt for licence details
 
 using System;

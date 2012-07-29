@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2010-2011 Matthew Strawbridge
+﻿// Copyright (c) 2010-2012 Matthew Strawbridge
 // See accompanying licence.txt for licence details
 
 namespace Visual_Cobra_Express.AboutBoxPackage
@@ -20,7 +20,7 @@ namespace Visual_Cobra_Express.AboutBoxPackage
         /// <summary>
         /// The xml document.
         /// </summary>
-        private XmlDocument mXmlDoc;
+        private XmlDocument _xmlDoc;
 
         private const string PropertyNameTitle = "Title";
         private const string PropertyNameDescription = "Description";
@@ -186,18 +186,18 @@ namespace Visual_Cobra_Express.AboutBoxPackage
         {
             get
             {
-                if (mXmlDoc == null)
+                if (_xmlDoc == null)
                 {
                     // if we haven't already found the resource XmlDocument, then try to find it.
                     var provider = TryFindResource("aboutProvider") as XmlDataProvider;
                     if (provider != null)
                     {
                         // save away the XmlDocument, so we don't have to get it multiple times.
-                        mXmlDoc = provider.Document;
+                        _xmlDoc = provider.Document;
                     }
                 }
 
-                return mXmlDoc;
+                return _xmlDoc;
             }
         }
 

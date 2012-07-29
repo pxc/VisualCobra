@@ -1,5 +1,6 @@
 ﻿// PkgCmdID.cs
 // MUST match PkgCmdID.h
+
 namespace VisualCobra.Visual_Cobra_Menu
 {
     /// <summary>

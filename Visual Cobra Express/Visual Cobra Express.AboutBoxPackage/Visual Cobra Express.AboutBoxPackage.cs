@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2010-2011 Matthew Strawbridge
+﻿// Copyright (c) 2010-2012 Matthew Strawbridge
 // See accompanying licence.txt for licence details
 
 namespace Visual_Cobra_Express.AboutBoxPackage
@@ -43,7 +43,6 @@ namespace Visual_Cobra_Express.AboutBoxPackage
 
         /////////////////////////////////////////////////////////////////////////////
         // Overriden Package Implementation
-        #region Package Members
 
         /// <summary>
         /// Initialization of the package; this method is called right after the package is sited, so this is the place
@@ -66,7 +65,6 @@ namespace Visual_Cobra_Express.AboutBoxPackage
             var menuItem = new MenuCommand(MenuItemCallback, menuCommandID);
             mcs.AddCommand(menuItem);
         }
-        #endregion
 
         /// <summary>
         /// This function is the callback used to execute a command when the a menu item is clicked.

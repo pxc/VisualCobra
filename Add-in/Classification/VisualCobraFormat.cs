@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2010-2011 Matthew Strawbridge
+﻿// Copyright (c) 2010-2012 Matthew Strawbridge
 // See accompanying licence.txt for licence details
 
 namespace VisualCobra.Classification
@@ -25,7 +25,7 @@ namespace VisualCobra.Classification
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="CobraKeywordFormat"/> class, which
-        /// defines the visual format for the <see cref="CobraKeyword"/> classification type.
+        /// defines the visual format for the <c>CobraKeyword</c> classification type.
         /// </summary>
         public CobraKeywordFormat()
         {
@@ -49,7 +49,7 @@ namespace VisualCobra.Classification
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="CobraCommentFormat"/> class,
-        /// which defines the visual format for the <see cref="CobraComment"/> classification type.
+        /// which defines the visual format for the <c>CobraComment</c> classification type.
         /// </summary>
         public CobraCommentFormat()
         {
@@ -73,7 +73,7 @@ namespace VisualCobra.Classification
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="CobraStringFormat"/> class,
-        /// which defines the visual format for the <see cref="CobraString"/> classification type.
+        /// which defines the visual format for the <c>CobraString</c> classification type.
         /// </summary>
         public CobraStringFormat()
         {
@@ -97,7 +97,7 @@ namespace VisualCobra.Classification
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="CobraClassFormat"/> class,
-        /// which defines the visual format for the <see cref="CobraClass"/> classification type.
+        /// which defines the visual format for the <c>CobraClass</c> classification type.
         /// </summary>
         public CobraClassFormat()
         {
@@ -121,17 +121,17 @@ namespace VisualCobra.Classification
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="CobraIndentErrorFormat"/> class,
-        /// which defines the visual format for the <see cref="CobraIndentError"/> classification type.
+        /// which defines the visual format for the <c>CobraIndentError</c> classification type.
         /// </summary>
         public CobraIndentErrorFormat()
         {
             DisplayName = "CobraIndentErrorFormat";
 
             var cobraIndentErrorColor = Colors.Orange;
-            const double CobraIndentErrorPenWidth = 1.0;
+            const double cobraIndentErrorPenWidth = 1.0;
 
             var cobraIndentErrorUnderline = new TextDecoration();
-            var orangePen = new Pen(new SolidColorBrush(cobraIndentErrorColor), CobraIndentErrorPenWidth) { DashStyle = DashStyles.Dot };
+            var orangePen = new Pen(new SolidColorBrush(cobraIndentErrorColor), cobraIndentErrorPenWidth) { DashStyle = DashStyles.Dot };
 
             cobraIndentErrorUnderline.Pen = orangePen;
             cobraIndentErrorUnderline.PenThicknessUnit = TextDecorationUnit.FontRecommended;

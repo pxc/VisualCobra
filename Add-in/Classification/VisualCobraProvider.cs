@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2010-2011 Matthew Strawbridge
+﻿// Copyright (c) 2010-2012 Matthew Strawbridge
 // See accompanying licence.txt for licence details
 
 namespace VisualCobra.Classification
@@ -22,7 +22,7 @@ namespace VisualCobra.Classification
         /// to the custom classification type later.
         /// </summary>
         [Import]
-        internal IClassificationTypeRegistryService ClassificationRegistry; // Set via MEF
+        internal IClassificationTypeRegistryService ClassificationRegistry = null; // Set via MEF
 
         /// <summary>
         /// Gets the classifier using the <see cref="ClassificationRegistry"/>.
@@ -33,7 +33,7 @@ namespace VisualCobra.Classification
         {
             Trace.WriteLine("In GetClassifier()");
             return buffer.Properties.GetOrCreateSingletonProperty(
-                () => new VisualCobra(this.ClassificationRegistry));
+                () => new VisualCobra(ClassificationRegistry));
         }
     }
     #endregion //provider def

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2010-2011 Matthew Strawbridge
+﻿// Copyright (c) 2010-2012 Matthew Strawbridge
 // See accompanying licence.txt for licence details
 
 namespace VisualCobra.Visual_Cobra_Menu
@@ -33,9 +33,7 @@ namespace VisualCobra.Visual_Cobra_Menu
     // This attribute is needed to let the shell know that this package exposes some menus.
     [ProvideMenuResource("Menus.ctmenu", 1)]
     [Guid(GuidList.GuidVisualCobraMenuPkgString)]
-    [ProvideOptionPage(typeof(VisualCobraOptions),
-    "Visual Cobra Options", "Environment",
-    1000, 1001, true)]
+    [ProvideOptionPage(typeof(VisualCobraOptions), "Visual Cobra Options", "Environment", 1000, 1001, true)]
     public sealed class VisualCobraMenuPackage : Package
     {
         /// <summary>
@@ -48,7 +46,6 @@ namespace VisualCobra.Visual_Cobra_Menu
 
         /////////////////////////////////////////////////////////////////////////////
         // Overriden Package Implementation
-        #region Package Members
 
         /// <summary>
         /// Initialization of the package; this method is called right after the package is sited, so this is the place
@@ -67,16 +64,17 @@ namespace VisualCobra.Visual_Cobra_Menu
             }
 
             // Create the command for Cobra settings
-            var menuCobraSettingsCommandID = new CommandID(GuidList.GuidVisualCobraMenuCmdSet, (int)PkgCmdIDList.CmdIDCobraSettings);
+            var menuCobraSettingsCommandID = new CommandID(
+                GuidList.GuidVisualCobraMenuCmdSet, (int)PkgCmdIDList.CmdIDCobraSettings);
             var menuItemCobraSettings = new MenuCommand(DoCobraSettings, menuCobraSettingsCommandID);
             mcs.AddCommand(menuItemCobraSettings);
 
             // Create the command for CobraRun
-            var menuCobraRunCommandID = new CommandID(GuidList.GuidVisualCobraMenuCmdSet, (int)PkgCmdIDList.CmdIDCobraRun);
+            var menuCobraRunCommandID = new CommandID(
+                GuidList.GuidVisualCobraMenuCmdSet, (int)PkgCmdIDList.CmdIDCobraRun);
             var menuItemCobraRun = new MenuCommand(DoCobraRun, menuCobraRunCommandID);
             mcs.AddCommand(menuItemCobraRun);
         }
-        #endregion
 
         /// <summary>
         /// This function is the callback used to execute a command when the a menu item is clicked.
@@ -87,26 +85,31 @@ namespace VisualCobra.Visual_Cobra_Menu
         /// <param name="e">The event.</param>
 // ReSharper disable UnusedMember.Local
 // ReSharper disable UnusedParameter.Local
-        private void MenuItemCallback(object sender, EventArgs e)
-// ReSharper restore UnusedParameter.Local
+        private void MenuItemCallback(object sender, EventArgs e) // ReSharper restore UnusedParameter.Local
 // ReSharper restore UnusedMember.Local
         {
             // Show a Message Box to prove we were here
             var uiShell = (IVsUIShell)GetService(typeof(SVsUIShell));
             var clsid = Guid.Empty;
             int result;
-            Microsoft.VisualStudio.ErrorHandler.ThrowOnFailure(uiShell.ShowMessageBox(
-                       0,
-                       ref clsid,
-                       "Visual Cobra Menu",
-                       string.Format(CultureInfo.CurrentCulture, "Inside {0}.MenuItemCallback() called from 0x{1:X}", ToString(), ((MenuCommand)sender).CommandID.ID),
-                       string.Empty,
-                       0,
-                       OLEMSGBUTTON.OLEMSGBUTTON_OK,
-                       OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST,
-                       OLEMSGICON.OLEMSGICON_INFO,
-                       0,        // false
-                       out result));
+            Microsoft.VisualStudio.ErrorHandler.ThrowOnFailure(
+                uiShell.ShowMessageBox(
+                    dwCompRole: 0,
+                    rclsidComp: ref clsid,
+                    pszTitle: "Visual Cobra Menu",
+                    pszText:
+                        string.Format(
+                            CultureInfo.CurrentCulture,
+                            "Inside {0}.MenuItemCallback() called from 0x{1:X}",
+                            ToString(),
+                            ((MenuCommand)sender).CommandID.ID),
+                    pszHelpFile: string.Empty,
+                    dwHelpContextID: 0,
+                    msgbtn: OLEMSGBUTTON.OLEMSGBUTTON_OK,
+                    msgdefbtn: OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST,
+                    msgicon: OLEMSGICON.OLEMSGICON_INFO,
+                    fSysAlert: 0,
+                    pnResult: out result));
         }
 
         /// <summary>
@@ -145,14 +148,17 @@ namespace VisualCobra.Visual_Cobra_Menu
                 if (options != null)
                 {
                     var rawCommandLine = options.CobraCommandLine;
-                    var fullCommandLine = rawCommandLine.Replace("<filename>", String.Format("\"{0}\"", dte.ActiveDocument.Name));
+                    var fullCommandLine = rawCommandLine.Replace(
+                        Resources.Filename_placeholder, String.Format("\"{0}\"", dte.ActiveDocument.Name));
 
                     using (var cobraProcess = new Process
                                                   {
                                                       StartInfo =
                                                           {
                                                               FileName = "cmd",
-                                                              Arguments = String.Format("/k {0}", fullCommandLine),
+                                                              Arguments =
+                                                                  String.Format(
+                                                                      "/k {0}", fullCommandLine),
                                                               CreateNoWindow = false,
                                                               WorkingDirectory = dte.ActiveDocument.Path
                                                           }
@@ -164,7 +170,7 @@ namespace VisualCobra.Visual_Cobra_Menu
                         }
                         catch (Exception ex)
                         {
-                            SimpleCobraMessageBox(String.Format("Error running Cobra: {0}", ex.Message));
+                            SimpleCobraMessageBox(String.Format(Resources.Error_running_Cobra, ex.Message));
                         }
                     }
                 }
@@ -172,7 +178,7 @@ namespace VisualCobra.Visual_Cobra_Menu
             else
             {
                 // either dte is null or there is no active document
-                SimpleCobraMessageBox("No Cobra source file loaded");
+                SimpleCobraMessageBox(Resources.No_Cobra_source_file_loaded);
             }
         }
 
@@ -186,17 +192,17 @@ namespace VisualCobra.Visual_Cobra_Menu
             var clsid = Guid.Empty;
             int result;
             uiShell.ShowMessageBox(
-                0,
-                ref clsid,
-                "Cobra",
-                message,
-                string.Empty,
-                0,
-                OLEMSGBUTTON.OLEMSGBUTTON_OK,
-                OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST,
-                OLEMSGICON.OLEMSGICON_INFO,
-                0,        // false
-                out result);
-        }    
+                dwCompRole: 0,
+                rclsidComp: ref clsid,
+                pszTitle: "Cobra",
+                pszText: message,
+                pszHelpFile: string.Empty,
+                dwHelpContextID: 0,
+                msgbtn: OLEMSGBUTTON.OLEMSGBUTTON_OK,
+                msgdefbtn: OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST,
+                msgicon: OLEMSGICON.OLEMSGICON_INFO,
+                fSysAlert: 0,
+                pnResult: out result);
+        }
     }
 }

@@ -28,9 +28,9 @@ namespace VisualCobra
         public const string MultiLineCommentDelimiter = "\"\"\"";
 
         /// <summary>
-        /// Classification type for Cobra keywords.
+        /// Classification type for Cobra classes.
         /// </summary>
-        private static IClassificationType _cobraKeywordClassificationType;
+        private static IClassificationType _cobraClassClassificationType;
 
         /// <summary>
         /// Classification type for Cobra comments.
@@ -38,19 +38,19 @@ namespace VisualCobra
         private static IClassificationType _cobraCommentClassificationType;
 
         /// <summary>
-        /// Classification type for Cobra strings.
-        /// </summary>
-        private static IClassificationType _cobraStringClassificationType;
-
-        /// <summary>
-        /// Classification type for Cobra classes.
-        /// </summary>
-        private static IClassificationType _cobraClassClassificationType;
-
-        /// <summary>
         /// Classification type for Cobra indentation errors.
         /// </summary>
         private static IClassificationType _cobraIndentErrorClassificationType;
+
+        /// <summary>
+        /// Classification type for Cobra keywords.
+        /// </summary>
+        private static IClassificationType _cobraKeywordClassificationType;
+
+        /// <summary>
+        /// Classification type for Cobra strings.
+        /// </summary>
+        private static IClassificationType _cobraStringClassificationType;
 
 #pragma warning disable 1584,1711,1572,1581,1580
         /// <summary>
@@ -104,11 +104,11 @@ namespace VisualCobra
 
             // Use Cobra's own tokenizer
             var tokCobra = new VisualCobraTokenizer
-                               {
-                                   TypeProvider = compiler,
-                                   WillReturnComments = true,
-                                   WillReturnDirectives = true
-                               };
+            {
+                TypeProvider = compiler,
+                WillReturnComments = true,
+                WillReturnDirectives = true
+            };
 
             Node.SetCompiler(compiler);
             tokCobra.StartSource(span.GetText());
@@ -120,27 +120,34 @@ namespace VisualCobra
 
             // Remove classification spans that are (partly) inside multi-line comment spans
             var multiLineCommentsInCurrentSpan = multiLineComments.Where(span.IntersectsWith).ToList();
-            classifications.RemoveAll(cs => multiLineCommentsInCurrentSpan.AsParallel().Any(mlc => mlc.IntersectsWith(cs.Span.Span)));
+            classifications.RemoveAll(
+                cs => multiLineCommentsInCurrentSpan.AsParallel().Any(mlc => mlc.IntersectsWith(cs.Span.Span)));
 
             // Add all comment spans
             classifications.AddRange(
                 multiLineCommentsInCurrentSpan.Select(
-                    mlc =>
-                    new ClassificationSpan(new SnapshotSpan(span.Snapshot, mlc), _cobraCommentClassificationType)));
+                    mlc => new ClassificationSpan(new SnapshotSpan(span.Snapshot, mlc), _cobraCommentClassificationType)));
 
             return classifications;
         }
 
         /// <summary>
-        /// Determines whether the specified token represents the name of a class.
+        /// Creates a <see cref="ClassificationSpan"/> from the supplied span and token, and
+        /// adds it to the supplied classifications.
         /// </summary>
+        /// <param name="span">The snapshop span.</param>
+        /// <param name="classifications">The classifications.</param>
         /// <param name="tok">The token.</param>
-        /// <returns>
-        ///   <c>true</c> if the specified token is the name of a class; otherwise, <c>false</c>.
-        /// </returns>
-        private static bool IsClass(IToken tok)
+        /// <param name="classificationType">Type of the classification.</param>
+        private static void AddSpanToClassifications(
+            SnapshotSpan span,
+            ICollection<ClassificationSpan> classifications,
+            IToken tok,
+            IClassificationType classificationType)
         {
-            return tok != null && tok.Which == "ID" && tok.Text.Length > 0 && char.IsUpper(tok.Text[0]);
+            var tokenSpan = new SnapshotSpan(span.Snapshot, new Span(span.Start.Position + tok.CharNum - 1, tok.Length));
+            var cs = new ClassificationSpan(tokenSpan, classificationType);
+            classifications.Add(cs);
         }
 
         /// <summary>
@@ -158,26 +165,6 @@ namespace VisualCobra
                         new ClassificationSpan(
                         new SnapshotSpan(span.Snapshot, span.Start + m.Index + m.Length - 1, 1),
                         _cobraIndentErrorClassificationType)).ToList();
-        }
-
-        /// <summary>
-        /// Creates a <see cref="ClassificationSpan"/> from the supplied span and token, and
-        /// adds it to the supplied classifications.
-        /// </summary>
-        /// <param name="span">The snapshop span.</param>
-        /// <param name="classifications">The classifications.</param>
-        /// <param name="tok">The token.</param>
-        /// <param name="classificationType">Type of the classification.</param>
-        private static void AddSpanToClassifications(
-            SnapshotSpan span,
-            ICollection<ClassificationSpan> classifications,
-            IToken tok,
-            IClassificationType classificationType)
-        {
-            var tokenSpan = new SnapshotSpan(
-                span.Snapshot, new Span(span.Start.Position + tok.CharNum - 1, tok.Length));
-            var cs = new ClassificationSpan(tokenSpan, classificationType);
-            classifications.Add(cs);
         }
 
         /// <summary>
@@ -207,34 +194,28 @@ namespace VisualCobra
                         case "STRING_DOUBLE":
                         case "CHAR":
                         case "CHAR_LIT_SINGLE":
-                            AddSpanToClassifications(
-                                span, classifications, tok, _cobraStringClassificationType);
+                            AddSpanToClassifications(span, classifications, tok, _cobraStringClassificationType);
                             break;
 
                         case "ID": // Note "CLASS" is the class keyword, not "a class"
                             if (IsClass(tok))
                             {
-                                AddSpanToClassifications(
-                                    span, classifications, tok, _cobraClassClassificationType);
+                                AddSpanToClassifications(span, classifications, tok, _cobraClassClassificationType);
                             }
 
                             break;
 
                         case "QUESTION":
+                            if (IsClass(previous))
                             {
-                                if (IsClass(previous))
-                                {
-                                    // add another char to cover the ? on the end of a nillable class
-                                    AddSpanToClassifications(
-                                        span, classifications, tok, _cobraClassClassificationType);
-                                }
-
-                                break;
+                                // add another char to cover the ? on the end of a nillable class
+                                AddSpanToClassifications(span, classifications, tok, _cobraClassClassificationType);
                             }
 
+                            break;
+
                         case "COMMENT":
-                            AddSpanToClassifications(
-                                span, classifications, tok, _cobraCommentClassificationType);
+                            AddSpanToClassifications(span, classifications, tok, _cobraCommentClassificationType);
                             break;
                     }
 
@@ -314,6 +295,18 @@ namespace VisualCobra
             _commentCache[snapshot] = multiLineComments;
 
             return multiLineComments;
+        }
+
+        /// <summary>
+        /// Determines whether the specified token represents the name of a class.
+        /// </summary>
+        /// <param name="tok">The token.</param>
+        /// <returns>
+        ///   <c>true</c> if the specified token is the name of a class; otherwise, <c>false</c>.
+        /// </returns>
+        private static bool IsClass(IToken tok)
+        {
+            return tok != null && tok.Which == "ID" && tok.Text.Length > 0 && char.IsUpper(tok.Text[0]);
         }
     }
 }

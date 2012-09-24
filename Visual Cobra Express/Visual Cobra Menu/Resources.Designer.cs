@@ -65,7 +65,7 @@ namespace VisualCobra.Visual_Cobra_Menu {
         /// </summary>
         internal static string Default_Cobra_command_line {
             get {
-                return ResourceManager.GetString("Default Cobra command line", resourceCulture);
+                return ResourceManager.GetString("Default_Cobra_command_line", resourceCulture);
             }
         }
         
@@ -74,7 +74,7 @@ namespace VisualCobra.Visual_Cobra_Menu {
         /// </summary>
         internal static string Error_running_Cobra {
             get {
-                return ResourceManager.GetString("Error running Cobra", resourceCulture);
+                return ResourceManager.GetString("Error_running_Cobra", resourceCulture);
             }
         }
         
@@ -83,7 +83,7 @@ namespace VisualCobra.Visual_Cobra_Menu {
         /// </summary>
         internal static string Filename_placeholder {
             get {
-                return ResourceManager.GetString("Filename placeholder", resourceCulture);
+                return ResourceManager.GetString("Filename_placeholder", resourceCulture);
             }
         }
         
@@ -92,7 +92,7 @@ namespace VisualCobra.Visual_Cobra_Menu {
         /// </summary>
         internal static string No_Cobra_source_file_loaded {
             get {
-                return ResourceManager.GetString("No Cobra source file loaded", resourceCulture);
+                return ResourceManager.GetString("No_Cobra_source_file_loaded", resourceCulture);
             }
         }
     }

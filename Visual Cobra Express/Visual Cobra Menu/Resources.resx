@@ -1,13 +1,4 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<!--
-    VS SDK Notes: This resx file contains the resources that will be consumed directly by your package.
-    For example, if you chose to create a tool window, there is a resource with ID 'CanNotCreateWindow'. This
-    is used in VsPkg.cs to determine the string to show the user if there is an error when attempting to create
-    the tool window.
-
-    Resources that are accessed directly from your package *by Visual Studio* are stored in the VSPackage.resx 
-    file.
--->
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -126,16 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Default Cobra command line">
-    <value xml:space="preserve">cobra -ert &lt;filename&gt;</value>
+  <data name="Default_Cobra_command_line" xml:space="preserve">
+    <value>cobra -ert &lt;filename&gt;</value>
   </data>
-  <data name="Filename placeholder">
-    <value xml:space="preserve">&lt;filename&gt;</value>
+  <data name="Filename_placeholder" xml:space="preserve">
+    <value>&lt;filename&gt;</value>
   </data>
-  <data name="Error running Cobra">
-    <value xml:space="preserve">Error running Cobra: {0}</value>
+  <data name="Error_running_Cobra" xml:space="preserve">
+    <value>Error running Cobra: {0}</value>
   </data>
-  <data name="No Cobra source file loaded">
-    <value xml:space="preserve">No Cobra source file loaded</value>
+  <data name="No_Cobra_source_file_loaded" xml:space="preserve">
+    <value>No Cobra source file loaded</value>
   </data>
 </root>

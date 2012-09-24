@@ -77,6 +77,76 @@ namespace VisualCobra.Visual_Cobra_Menu
         }
 
         /// <summary>
+        /// Displays the Cobra run dialog and does the run.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void DoCobraRun(object sender, EventArgs e)
+        {
+            // TODO Save all open files?
+
+            // Development tools extensibility (DTE)
+            var dte = (EnvDTE.DTE)GetService(typeof(EnvDTE.DTE));
+            if (dte != null && dte.ActiveDocument != null)
+            {
+                // get the command to run from the options
+                var options = GetDialogPage(typeof(VisualCobraOptions)) as VisualCobraOptions;
+                if (options != null)
+                {
+                    var rawCommandLine = options.CobraCommandLine;
+                    var fullCommandLine = rawCommandLine.Replace(
+                        Resources.Filename_placeholder, String.Format("\"{0}\"", dte.ActiveDocument.Name));
+
+                    using (var cobraProcess = new Process
+                    {
+                        StartInfo =
+                        {
+                            FileName = "cmd",
+                            Arguments =
+                                String.Format(
+                                    "/k {0}", fullCommandLine),
+                            CreateNoWindow = false,
+                            WorkingDirectory = dte.ActiveDocument.Path
+                        }
+                    })
+                    {
+                        try
+                        {
+                            cobraProcess.Start();
+                        }
+                        catch (Exception ex)
+                        {
+                            SimpleCobraMessageBox(String.Format(Resources.Error_running_Cobra, ex.Message));
+                        }
+                    }
+                }
+            }
+            else
+            {
+                // either dte is null or there is no active document
+                SimpleCobraMessageBox(Resources.No_Cobra_source_file_loaded);
+            }
+        }
+
+        /// <summary>
+        /// Displays the Cobra Settings dialog page.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void DoCobraSettings(object sender, EventArgs e)
+        {
+            var dte = (EnvDTE.DTE)GetService(typeof(EnvDTE.DTE));
+            if (dte != null)
+            {
+                dte.ExecuteCommand("Tools.Options", "09ED5841-E5A2-475B-B869-42071B78320A");
+            }
+            else
+            {
+                SimpleCobraMessageBox("Could not get DTE");
+            }
+        }
+
+        /// <summary>
         /// This function is the callback used to execute a command when the a menu item is clicked.
         /// See the Initialize method to see how the menu item is associated to this function using
         /// the OleMenuCommandService service and the MenuCommand class.
@@ -110,76 +180,6 @@ namespace VisualCobra.Visual_Cobra_Menu
                     msgicon: OLEMSGICON.OLEMSGICON_INFO,
                     fSysAlert: 0,
                     pnResult: out result));
-        }
-
-        /// <summary>
-        /// Displays the Cobra Settings dialog page.
-        /// </summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void DoCobraSettings(object sender, EventArgs e)
-        {
-            var dte = (EnvDTE.DTE)GetService(typeof(EnvDTE.DTE));
-            if (dte != null)
-            {
-                dte.ExecuteCommand("Tools.Options", "09ED5841-E5A2-475B-B869-42071B78320A");
-            }
-            else
-            {
-                SimpleCobraMessageBox("Could not get DTE");
-            }
-        }
-
-        /// <summary>
-        /// Displays the Cobra run dialog and does the run.
-        /// </summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void DoCobraRun(object sender, EventArgs e)
-        {
-            // TODO Save all open files?
-
-            // Development tools extensibility (DTE)
-            var dte = (EnvDTE.DTE)GetService(typeof(EnvDTE.DTE));
-            if (dte != null && dte.ActiveDocument != null)
-            {
-                // get the command to run from the options
-                var options = GetDialogPage(typeof(VisualCobraOptions)) as VisualCobraOptions;
-                if (options != null)
-                {
-                    var rawCommandLine = options.CobraCommandLine;
-                    var fullCommandLine = rawCommandLine.Replace(
-                        Resources.Filename_placeholder, String.Format("\"{0}\"", dte.ActiveDocument.Name));
-
-                    using (var cobraProcess = new Process
-                                                  {
-                                                      StartInfo =
-                                                          {
-                                                              FileName = "cmd",
-                                                              Arguments =
-                                                                  String.Format(
-                                                                      "/k {0}", fullCommandLine),
-                                                              CreateNoWindow = false,
-                                                              WorkingDirectory = dte.ActiveDocument.Path
-                                                          }
-                                                  })
-                    {
-                        try
-                        {
-                            cobraProcess.Start();
-                        }
-                        catch (Exception ex)
-                        {
-                            SimpleCobraMessageBox(String.Format(Resources.Error_running_Cobra, ex.Message));
-                        }
-                    }
-                }
-            }
-            else
-            {
-                // either dte is null or there is no active document
-                SimpleCobraMessageBox(Resources.No_Cobra_source_file_loaded);
-            }
         }
 
         /// <summary>

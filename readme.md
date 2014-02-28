@@ -22,7 +22,8 @@ There are some videos relating to this project on [my blog](http://www.matthewst
 History
 -------
 2010-11-13  1.0  Initial release.
-2013-02-23  ---  Changed readme to markdown and clarified licensing.
+
+2014-02-23  ---  Changed readme to markdown and clarified licensing.
 
 Future Plans
 ------------
